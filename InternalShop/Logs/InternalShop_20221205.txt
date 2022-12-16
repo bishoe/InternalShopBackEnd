@@ -1,0 +1,732 @@
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "EmployeeSalary"
+entityType : "EmployeesT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "PAIDAMOUNT"
+entityType : "InvoiceStoreStatusT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "RemainingAMOUNT"
+entityType : "InvoiceStoreStatusT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "AMountDicount"
+entityType : "MasterProductsWarehouseT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalBDiscount"
+entityType : "MasterProductsWarehouseT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalPrice"
+entityType : "MasterProductsWarehouseT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "AMountDicount"
+entityType : "ProductsWarehouseObjectT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "PurchasingPrice"
+entityType : "ProductsWarehouseObjectT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "SellingPrice"
+entityType : "ProductsWarehouseObjectT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalAmountRow"
+entityType : "ProductsWarehouseObjectT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalBDiscount"
+entityType : "ProductsWarehouseObjectT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalPrice"
+entityType : "ProductsWarehouseObjectT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "PurchasingPrice"
+entityType : "ProductsWarehouseT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "SellingPrice"
+entityType : "ProductsWarehouseT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalAmountRow"
+entityType : "ProductsWarehouseT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "AMountDicount"
+entityType : "ReportProductsWarehouse"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "PurchasingPrice"
+entityType : "ReportProductsWarehouse"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "SellingPrice"
+entityType : "ReportProductsWarehouse"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalAmountRow"
+entityType : "ReportProductsWarehouse"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalBDiscount"
+entityType : "ReportProductsWarehouse"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalPrice"
+entityType : "ReportProductsWarehouse"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "AMountDicount"
+entityType : "ReportSalesInvoiceById"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "AmountPaid"
+entityType : "ReportSalesInvoiceById"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "RemainingAmount"
+entityType : "ReportSalesInvoiceById"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "SellingPrice"
+entityType : "ReportSalesInvoiceById"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "Tax"
+entityType : "ReportSalesInvoiceById"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalAmountRow"
+entityType : "ReportSalesInvoiceById"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalBDiscount"
+entityType : "ReportSalesInvoiceById"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalPrice"
+entityType : "ReportSalesInvoiceById"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "AMountDicount"
+entityType : "SalesinvoiceMasterT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "AmountPaid"
+entityType : "SalesinvoiceMasterT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "RemainingAmount"
+entityType : "SalesinvoiceMasterT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "Tax"
+entityType : "SalesinvoiceMasterT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalBDiscount"
+entityType : "SalesinvoiceMasterT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalPrice"
+entityType : "SalesinvoiceMasterT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "SellingPrice"
+entityType : "SalesinvoiceT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/5/2022 2:29:55 PM +02:00 | Level - Warning |
+----------------------------------------------------------------------
+property : "TotalAmountRow"
+entityType : "SalesinvoiceT"
+EventId : { Id: 30000, Name: "Microsoft.EntityFrameworkCore.Model.Validation.DecimalTypeDefaultWarning" }
+SourceContext : "Microsoft.EntityFrameworkCore.Model.Validation"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/6/2022 10:42:09 AM +02:00 | Level - Error |
+----------------------------------------------------------------------
+Error : "Object reference not set to an instance of an object."
+StackTrace : "   at InternalShop.ClassProject.PermissionToEntertheStoreProductSVC.PermissionToEntertheStoreProductSVC.CreatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductT PermissionToEntertheStoreProductT) in H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop\Services\PermissionToEntertheStoreProductSVC\PermissionToEntertheStoreProductSVC.cs:line 26"
+InnerException : null
+Source : "InternalShop"
+ActionId : "1fa299f9-f435-4d99-95d2-cbbb3ec18129"
+ActionName : "InternalShop.Controllers.PermissionToEntertheStoreProductController.CreatePermissionToEntertheStoreProductAsync (InternalShop)"
+RequestId : "80000016-0002-fb00-b63f-84710c7967bb"
+RequestPath : "/api/PermissionToEntertheStoreProduct/"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/6/2022 10:57:33 AM +02:00 | Level - Error |
+----------------------------------------------------------------------
+Error : "Object reference not set to an instance of an object."
+StackTrace : "   at InternalShop.ClassProject.PermissionToEntertheStoreProductSVC.PermissionToEntertheStoreProductSVC.CreatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductT PermissionToEntertheStoreProductT) in H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop\Services\PermissionToEntertheStoreProductSVC\PermissionToEntertheStoreProductSVC.cs:line 26"
+InnerException : null
+Source : "InternalShop"
+ActionId : "1fa299f9-f435-4d99-95d2-cbbb3ec18129"
+ActionName : "InternalShop.Controllers.PermissionToEntertheStoreProductController.CreatePermissionToEntertheStoreProductAsync (InternalShop)"
+RequestId : "80000012-0001-ff00-b63f-84710c7967bb"
+RequestPath : "/api/PermissionToEntertheStoreProduct/"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/6/2022 11:00:18 AM +02:00 | Level - Error |
+----------------------------------------------------------------------
+Error : "Object reference not set to an instance of an object."
+StackTrace : "   at InternalShop.ClassProject.PermissionToEntertheStoreProductSVC.PermissionToEntertheStoreProductSVC.CreatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductT PermissionToEntertheStoreProductT) in H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop\Services\PermissionToEntertheStoreProductSVC\PermissionToEntertheStoreProductSVC.cs:line 26"
+InnerException : null
+Source : "InternalShop"
+ActionId : "1fa299f9-f435-4d99-95d2-cbbb3ec18129"
+ActionName : "InternalShop.Controllers.PermissionToEntertheStoreProductController.CreatePermissionToEntertheStoreProductAsync (InternalShop)"
+RequestId : "80000014-0000-fc00-b63f-84710c7967bb"
+RequestPath : "/api/PermissionToEntertheStoreProduct/"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/6/2022 11:02:03 AM +02:00 | Level - Error |
+----------------------------------------------------------------------
+Error : "Object reference not set to an instance of an object."
+StackTrace : "   at InternalShop.ClassProject.PermissionToEntertheStoreProductSVC.PermissionToEntertheStoreProductSVC.CreatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductT PermissionToEntertheStoreProductT) in H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop\Services\PermissionToEntertheStoreProductSVC\PermissionToEntertheStoreProductSVC.cs:line 26"
+InnerException : null
+Source : "InternalShop"
+ActionId : "1fa299f9-f435-4d99-95d2-cbbb3ec18129"
+ActionName : "InternalShop.Controllers.PermissionToEntertheStoreProductController.CreatePermissionToEntertheStoreProductAsync (InternalShop)"
+RequestId : "8000002d-0002-fb00-b63f-84710c7967bb"
+RequestPath : "/api/PermissionToEntertheStoreProduct/"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/6/2022 11:03:13 AM +02:00 | Level - Error |
+----------------------------------------------------------------------
+Error : "Object reference not set to an instance of an object."
+StackTrace : "   at InternalShop.ClassProject.PermissionToEntertheStoreProductSVC.PermissionToEntertheStoreProductSVC.CreatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductT PermissionToEntertheStoreProductT) in H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop\Services\PermissionToEntertheStoreProductSVC\PermissionToEntertheStoreProductSVC.cs:line 26"
+InnerException : null
+Source : "InternalShop"
+ActionId : "1fa299f9-f435-4d99-95d2-cbbb3ec18129"
+ActionName : "InternalShop.Controllers.PermissionToEntertheStoreProductController.CreatePermissionToEntertheStoreProductAsync (InternalShop)"
+RequestId : "80000031-0002-fb00-b63f-84710c7967bb"
+RequestPath : "/api/PermissionToEntertheStoreProduct/"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/6/2022 11:08:49 AM +02:00 | Level - Error |
+----------------------------------------------------------------------
+Error : "Object reference not set to an instance of an object."
+StackTrace : "   at InternalShop.ClassProject.PermissionToEntertheStoreProductSVC.PermissionToEntertheStoreProductSVC.CreatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductT PermissionToEntertheStoreProductT) in H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop\Services\PermissionToEntertheStoreProductSVC\PermissionToEntertheStoreProductSVC.cs:line 26"
+InnerException : null
+Source : "InternalShop"
+ActionId : "1fa299f9-f435-4d99-95d2-cbbb3ec18129"
+ActionName : "InternalShop.Controllers.PermissionToEntertheStoreProductController.CreatePermissionToEntertheStoreProductAsync (InternalShop)"
+RequestId : "8000002d-0001-ff00-b63f-84710c7967bb"
+RequestPath : "/api/PermissionToEntertheStoreProduct/"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 12/6/2022 11:15:31 AM +02:00 | Level - Error |
+----------------------------------------------------------------------
+Error : "Object reference not set to an instance of an object."
+StackTrace : "   at InternalShop.ClassProject.PermissionToEntertheStoreProductSVC.PermissionToEntertheStoreProductSVC.CreatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductT PermissionToEntertheStoreProductT) in H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop\Services\PermissionToEntertheStoreProductSVC\PermissionToEntertheStoreProductSVC.cs:line 26"
+InnerException : null
+Source : "InternalShop"
+ActionId : "1fa299f9-f435-4d99-95d2-cbbb3ec18129"
+ActionName : "InternalShop.Controllers.PermissionToEntertheStoreProductController.CreatePermissionToEntertheStoreProductAsync (InternalShop)"
+RequestId : "80000035-0001-ff00-b63f-84710c7967bb"
+RequestPath : "/api/PermissionToEntertheStoreProduct/"
+Application : "InternalShop"
+MachineName : "DESKTOP-IISLR6T"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.19044.0"
+Version : "6.0.11"
+UserName : "bishoe"
+ProcessId : 11668
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
