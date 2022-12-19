@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿
 using InternalShop.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
@@ -98,13 +98,13 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
         public async Task<ManageStoreT> GetManageStoreByidAsync(int ManageStoreId)
         {
 
-            var GETIdMasterOFSTores = (ManageStoreT)null;
+            var GetManageStoreID = (ManageStoreT)null;
 
             try
             {
                 if (ManageStoreId != 0)
                 {
-                    GETIdMasterOFSTores = await _db.ManageStore.FindAsync(ManageStoreId);
+                    GetManageStoreID = await _db.ManageStore.FindAsync(ManageStoreId);
                 }
 
             }
@@ -116,7 +116,7 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
             }
             GC.Collect();
 
-            return GETIdMasterOFSTores;
+            return GetManageStoreID;
         }
 
       

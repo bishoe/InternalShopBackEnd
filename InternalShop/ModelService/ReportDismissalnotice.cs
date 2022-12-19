@@ -10,7 +10,7 @@ namespace InternalShop.Models
     {
         [Key]
         public int DismissalnoticeId { get; set; }
-        public int MasterOFSToresId { get; set; }
+        public int ManageStoreID { get; set; }
         public int ProdouctsID { get; set; }
 
         public int quantityProduct { get; set; }
@@ -21,6 +21,6 @@ namespace InternalShop.Models
 
         public string BarCodeText { get; set; }
 
-        public string NameMasterOFSTores { get; set; }
+        public string ManageStorename { get; set; }
     }
 }

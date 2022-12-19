@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿using InternalShop;
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -23,7 +23,7 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
 
             try
             {
-                var AddMasterOFSTores = new PermissionToEntertheStoreProductT
+                var AddPermissionToEntertheStoreProduct = new PermissionToEntertheStoreProductT
                 {
                     ManageStoreId = PermissionToEntertheStoreProductT.ManageStoreId,
                     ProdouctsID = PermissionToEntertheStoreProductT.ProdouctsID,
@@ -32,11 +32,11 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
                     //UserID = 1
 
                 };
-                var result = await _db.PermissionToEntertheStoreProduct.AddAsync(AddMasterOFSTores);
+                var result = await _db.PermissionToEntertheStoreProduct.AddAsync(AddPermissionToEntertheStoreProduct);
                 await _db.SaveChangesAsync();
 
                 await dbContextTransaction.CommitAsync();
-                var GetCurrentId = AddMasterOFSTores.PermissionToEntertheStoreProductId;
+                var GetCurrentId = AddPermissionToEntertheStoreProduct.PermissionToEntertheStoreProductId;
 
                 responseObject.IsValid = true;
                 responseObject.Message =  ">"+ GetCurrentId;

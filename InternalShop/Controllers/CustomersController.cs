@@ -1,5 +1,5 @@
 ﻿using InternalShop.ClassProject.CustomersSVC;
-using DataBaseService;
+using InternalShop;
 using InternalShop.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

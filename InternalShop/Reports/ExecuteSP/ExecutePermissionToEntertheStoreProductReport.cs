@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +25,7 @@ namespace InternalShop.Reports.ExecuteSP
         }
         public IEnumerable<ReportPermissionToEntertheStoreProduct> ExecuteSPPermissionToEntertheStoreProduct(string SPName, [Optional] SqlParameter ParamValue)
         {
-            var result = _db.PermissionToEntertheStoreProduct.FromSqlRaw(SPName, ParamValue).ToList();
+            var result = _db.PermissionToEntertheStoreProduct.FromSqlRaw("select * from " + SPName, ParamValue).ToList();
             _db.Dispose();
             return ((IEnumerable<ReportPermissionToEntertheStoreProduct>)result);
         }
@@ -80,12 +80,12 @@ ExecuteSPPermissionToEntertheStoreProduct("dbo.SP_PermissionToEntertheStoreProdu
             return sb.ToString();
         }
 
-        public string GetHTMLString()
+        public string GetHTMLStringWithoutParam()
         {
 
             var PermissionToEntertheStoreProductObject
                 =
-ExecuteSPPermissionToEntertheStoreProduct("dbo.SP_PermissionToEntertheStoreProduct");
+ExecuteSPPermissionToEntertheStoreProduct("dbo.view_PermissionToEntertheStoreProduct");
 
             var sb = new StringBuilder();
             sb.Append(@"

@@ -12,7 +12,7 @@ using DinkToPdf;
 using System.IO;
 using DinkToPdf.Contracts;
 using InternalShop.Reports.ExecuteSP;
-using DataBaseService;
+using InternalShop;
 
 namespace OnlineShop.Controllers
 {

@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿using InternalShop;
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,19 +10,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Stimulsoft.Svg.ExCSS;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace InternalShop.Reports.ExecuteSP
 {
     public class ExecuteBranches : IExecuteBranches
     {
-        private readonly ApplicationDbContext _db;
+        private readonly ApplicationDbContext _db; 
+
         public ExecuteBranches(ApplicationDbContext db)
         {
             _db = db;
         }
         public IEnumerable<BranchesT> ExecuteSPBranches(string SPName, [Optional] SqlParameter ParamValue)
         {
-            var result = _db.Branches.FromSqlRaw(SPName, ParamValue).ToList();
+            var result = _db.Branches.FromSqlRaw("select * from "+ SPName, ParamValue).ToList();
             _db.Dispose();
             return (result);
         }
@@ -84,7 +86,7 @@ ExecuteSPBranches("dbo.SP_CreateReportBranchesBYCode @BranchCode", ParamValue);
                             _BranchesObject.BranchAddress,
 _BranchesObject.BranchPhone,
 _BranchesObject.BranchMobile
-//,_BranchesObject.ManageStorename
+, _BranchesObject.BranchName
 
 );
             }
@@ -94,12 +96,12 @@ _BranchesObject.BranchMobile
             return sb.ToString();
         }
 
-        public string GetHTMLString()
+        public string GetHTMLStringWithoutParam()
         {
 
             var BranchesObject
                 =
-ExecuteSPBranches("dbo.SP_CreateReportBranches");
+ExecuteSPBranches("dbo.view_CreateReportBranches");
 
             var sb = new StringBuilder();
             sb.Append(@"
@@ -112,13 +114,12 @@ ExecuteSPBranches("dbo.SP_CreateReportBranches");
 <img src='' alt='Girl in a jacket' width='' height=''>
                                 <table align='center'>
                                     <tr>
-                                         <th>BranchID</th>
-                                        <th>BranchCode</th>
-                                        <th>BranchName</th>
-                                        <th>BranchAddress</th>
-                                         <th>BranchPhone</th>
-                                         <th>BranchMobile</th>
-                                         <th>WearhouseBranche</th>
+                                         <th>كود الفرع</th>
+                                        <th>اسم الفرع</th>
+                                        <th>عنوان الفرع</th>
+                                         <th>هاتف الفرع</th>
+                                         <th>موبايل</th>
+                                         <th>المخزن  الخاص بالفرع</th>
 
 
  
@@ -131,8 +132,7 @@ ExecuteSPBranches("dbo.SP_CreateReportBranches");
                                     <td>{2}</td>
                                     <td>{3}</td>
                                     <td>{4}</td>
-                                    <td>{5}</td>
-                                   
+                                    
                                     </tr>
 ",
  _BranchesObject.BranchID,

@@ -1,5 +1,4 @@
-﻿using DataBaseService;
-using InternalShop.Models;
+﻿using InternalShop.Models;
 using InternalShop.Reports.ReportSalesInvoice;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;

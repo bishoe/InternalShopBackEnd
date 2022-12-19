@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿using InternalShop;
 using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
 using Microsoft.Data.SqlClient;

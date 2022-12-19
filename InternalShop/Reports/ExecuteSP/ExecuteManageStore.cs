@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿
 using InternalShop.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -73,12 +73,12 @@ ExecuteSPManageStore("dbo.SP_CreateReportmanageStoreById @ManageStoreID", ParamV
             return sb.ToString();
         }
 
-        public string GetHTMLString()
+        public string GetHTMLStringWithoutParam()
         {
 
             var ManageStoreObject
                 =
-ExecuteSPManageStore("dbo.SP_CreateReportManageStore");
+ExecuteSPManageStore("dbo.view_CreateReportManageStore");
 
             var sb = new StringBuilder();
             sb.Append(@"

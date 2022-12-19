@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -27,7 +27,8 @@ namespace InternalShop.Reports.ExecuteSP
         //}
         public IEnumerable<ReportProductsWarehouse> ExecuteSPProductsWarehouse(string SPName, [Optional] SqlParameter ParamValue)
         {
-            var result = _db.reportDismissalnotices.FromSqlRaw(SPName, ParamValue).ToList();
+            var result = _db.reportDismissalnotices.FromSqlRaw("select * from " + SPName, ParamValue).ToList();
+
             _db.Dispose();
             return ((IEnumerable<ReportProductsWarehouse>)result);
         }
@@ -116,13 +117,13 @@ _ProductsWarehousebject.SellingPrice
 
 
 
-        public string GetHTMLString()
+        public string GetHTMLStringWithoutParam()
         {
 
 
             var ProductsWarehousebject
                 =
-ExecuteSPProductsWarehouse("dbo.SP_CreateReportProductsWarehouse");
+ExecuteSPProductsWarehouse("dbo.view_CreateReportProductsWarehouse");
 
             var sb = new StringBuilder();
             sb.Append(@"

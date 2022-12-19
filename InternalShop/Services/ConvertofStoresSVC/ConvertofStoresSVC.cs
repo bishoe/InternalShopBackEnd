@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -160,7 +160,8 @@ namespace InternalShop.ClassProject.ConvertofStoresSVC
 
         public IEnumerable<object> GetAllConvertofStoresAsync(string SPName)
         {
-            var result = _db.reportConvertofStoresTs.FromSqlRaw(SPName).ToList();
+            var result = _db.reportConvertofStoresTs.FromSqlRaw("select * from " + SPName).ToList();
+
             return result;
         }
     }

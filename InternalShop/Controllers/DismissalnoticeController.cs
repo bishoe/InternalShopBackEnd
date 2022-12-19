@@ -1,7 +1,7 @@
 ﻿using DinkToPdf;
 using DinkToPdf.Contracts;
 using InternalShop.ClassProject.DismissalnoticeSVC;
-using DataBaseService;
+using InternalShop;
 using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
 using Microsoft.AspNetCore.Http;

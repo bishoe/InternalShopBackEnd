@@ -16,25 +16,25 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property.RootNamespace = InternalShop
 build_property.RootNamespace = InternalShop
-build_property.ProjectDir = H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop\
+build_property.ProjectDir = H:\InternalShop\InternalShopBackEnd\InternalShop\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = H:\InternalShop\InternalShop\InternalShop\InternalShop_\InternalShop
+build_property.MSBuildProjectDirectory = H:\InternalShop\InternalShopBackEnd\InternalShop
 build_property._RazorSourceGeneratorDebug = 
 
-[H:/InternalShop/InternalShop/InternalShop/InternalShop_/InternalShop/Pages/Shared/Index.cshtml]
+[H:/InternalShop/InternalShopBackEnd/InternalShop/Pages/Shared/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/InternalShop/InternalShop/InternalShop/InternalShop_/InternalShop/Views/Home/Index.cshtml]
+[H:/InternalShop/InternalShopBackEnd/InternalShop/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/InternalShop/InternalShop/InternalShop/InternalShop_/InternalShop/Views/Shared/_Layout.cshtml]
+[H:/InternalShop/InternalShopBackEnd/InternalShop/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/InternalShop/InternalShop/InternalShop/InternalShop_/InternalShop/Views/Shared/_ViewStart.cshtml]
+[H:/InternalShop/InternalShopBackEnd/InternalShop/Views/Shared/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿
 using DinkToPdf;
 using DinkToPdf.Contracts;
 using InternalShop.ClassProject.BranchesSVC;
@@ -7,13 +7,12 @@ using InternalShop.Reports.ExecuteSP;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
- using System.IO;
-using Microsoft.Data.SqlClient;
+ using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.Extensions.Caching.Memory;
+ using Microsoft.Extensions.Logging;
+  
 namespace InternalShop.Controllers
 {
     [Route("api/[controller]")]
@@ -23,24 +22,67 @@ namespace InternalShop.Controllers
         private readonly IBranches _Branches;
         private IConverter _converter;
         private readonly IExecuteBranches _executeBranches;
+        private IMemoryCache _cache;
+        private const string BRANCHESListCacheKey = "BRANCHESList";
+        private ILogger<BranchesController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
-        public BranchesController(IBranches branches, IConverter converter, IExecuteBranches executeBranches)
+        public BranchesController(IBranches branches, IConverter converter, IExecuteBranches executeBranches, IMemoryCache cache, ILogger<BranchesController> logger)
         {
-            
+
             _Branches = branches;
             _converter = converter;
             _executeBranches = executeBranches;
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
         }
         [HttpGet]
         //[Authorize]
 
         public async Task<IActionResult> GETALLBRANCHESASYNC()
         {
-            var branches = await _Branches.GETALLBRANCHESASYNC();
+           
+ 
+                if (_cache.TryGetValue(BRANCHESListCacheKey, out IEnumerable<IBranches> Branches))
+                {
+                    _logger.Log(LogLevel.Information, "Branches list found in cache.");
 
-            return Ok(branches);
+                }
+                else
+                {
 
-        }
+                    try
+                    {
+                        await semaphore.WaitAsync();
+                        if (_cache.TryGetValue("Brancheslist", out Branches))
+                        {
+                            _logger.Log(LogLevel.Information, "Employee list found in cache.");
+                        }
+                        else
+                        {
+
+
+                            _logger.Log(LogLevel.Information, "Branches list not found in cache. Fetching from database.");
+                        Branches = _Branches.GETALLBRANCHESASYNC();
+                            var cacheEntryOptions = new MemoryCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600))
+                            .SetPriority(CacheItemPriority.Normal)
+                            .SetSize(1024);
+                            _cache.Set(BRANCHESListCacheKey, Branches, cacheEntryOptions);
+                        }
+                    }
+                    finally
+                    {
+                        semaphore.Release();
+                    }
+                }
+                return Ok(Branches);
+
+
+            }       
+            
 
         [HttpGet("ReportBranches")]
         public IActionResult ReportBranches()
@@ -62,7 +104,7 @@ namespace InternalShop.Controllers
 
                 PagesCount = true,
                 ProduceForms = true,
-                HtmlContent = _executeBranches.GetHTMLString(),
+                HtmlContent = _executeBranches.GetHTMLStringWithoutParam(),
                 WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "styles.css") },
                 HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
                 FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
@@ -131,7 +173,11 @@ namespace InternalShop.Controllers
         {
 
             // Will hold all the errors related to registration
+            if (branches is null)
+            {
+                return BadRequest("branches is null");
 
+            }
             var result = await _Branches.CreateBranches(branches);
 
 
@@ -140,6 +186,7 @@ namespace InternalShop.Controllers
                 // Don't reveal that the user does not exist or is not confirmed
                 return Ok(new { Message = "Added successfully" });
             }
+            _cache.Remove(BRANCHESListCacheKey);
             return BadRequest("Cannot Save");
 
 

@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +22,8 @@ namespace InternalShop.Reports.ExecuteSP
         }
         public IEnumerable<ReportConvertofStoresT> ExecuteSPConvertofStores(string SPName, [Optional] SqlParameter ParamValue)
         {
-            var result = _db.Branches.FromSqlRaw(SPName, ParamValue).ToList();
+            var result = _db.Branches.FromSqlRaw("select * from " + SPName, ParamValue).ToList();
+
             _db.Dispose();
             return ((IEnumerable<ReportConvertofStoresT>)result);
         }
@@ -78,12 +79,12 @@ _ConvertofStoresObject.ManageStorename
             return sb.ToString();
         }
 
-        public string GetHTMLString()
+        public string GetHTMLStringWithoutParam()
         {
 
             var ConvertofStoresObject
                 =
-ExecuteSPConvertofStores("dbo.SP_CreateReportBranches");
+ExecuteSPConvertofStores("dbo.View_GetAllConvertOfStores");
 
             var sb = new StringBuilder();
             sb.Append(@"
@@ -121,6 +122,8 @@ _ConvertofStoresObject.ProdouctName);
 
             return sb.ToString();
         }
+
+     
     }
 }
 

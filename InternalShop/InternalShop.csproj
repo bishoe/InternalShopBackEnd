@@ -80,7 +80,6 @@
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="DinkToPdf" Version="1.0.8" />
-    <PackageReference Include="Microsoft.AspNet.Mvc.Futures" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="6.0.10" />
@@ -129,11 +128,6 @@
   <ItemGroup>
     <Folder Include="Logs\" />
     <Folder Include="Reports\ExecuteSP\CSSReports\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\ModelService\ModelService.csproj" />
-    <ProjectReference Include="..\DataBaseService\DataBaseService.csproj" />
   </ItemGroup>
 
 </Project>

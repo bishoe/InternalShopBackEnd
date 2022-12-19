@@ -1,121 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\InternalShop.csproj": {}
+    "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\InternalShop.csproj": {}
   },
   "projects": {
-    "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\DataBaseService\\DataBaseService.csproj": {
+    "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\InternalShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\DataBaseService\\DataBaseService.csproj",
-        "projectName": "DataBaseService",
-        "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\DataBaseService\\DataBaseService.csproj",
-        "packagesPath": "C:\\Users\\bishoe\\.nuget\\packages\\",
-        "outputPath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\DataBaseService\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\bishoe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj": {
-                "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.11, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.EntityFrameworkCore.Relational": {
-              "target": "Package",
-              "version": "[6.0.11, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.11, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[6.0.1, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\InternalShop.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\InternalShop.csproj",
+        "projectUniqueName": "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\InternalShop.csproj",
         "projectName": "InternalShop",
-        "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\InternalShop.csproj",
+        "projectPath": "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\InternalShop.csproj",
         "packagesPath": "C:\\Users\\bishoe\\.nuget\\packages\\",
-        "outputPath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\obj\\",
+        "outputPath": "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder"
@@ -134,14 +30,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\DataBaseService\\DataBaseService.csproj": {
-                "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\DataBaseService\\DataBaseService.csproj"
-              },
-              "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj": {
-                "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -161,10 +50,6 @@
             "DinkToPdf": {
               "target": "Package",
               "version": "[1.0.8, )"
-            },
-            "Microsoft.AspNet.Mvc.Futures": {
-              "target": "Package",
-              "version": "[5.0.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -298,110 +183,6 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj",
-        "projectName": "ModelService",
-        "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj",
-        "packagesPath": "C:\\Users\\bishoe\\.nuget\\packages\\",
-        "outputPath": "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\bishoe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.11, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.EntityFrameworkCore.Relational": {
-              "target": "Package",
-              "version": "[6.0.11, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.11, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[6.0.1, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.1, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

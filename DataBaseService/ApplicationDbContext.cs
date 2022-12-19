@@ -1,11 +1,9 @@
-﻿using InternalShop.Models;
-using Microsoft.AspNetCore.Identity;
+﻿ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using ModelService;
 using System.Reflection.Emit;
-//using ModelService;
+ using InternalShop.Models;
 
 namespace DataBaseService
 {

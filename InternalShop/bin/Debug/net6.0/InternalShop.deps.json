@@ -35,9 +35,7 @@
       "InternalShop/1.0.0": {
         "dependencies": {
           "BuildBundlerMinifier": "3.2.449",
-          "DataBaseService": "1.0.0",
           "DinkToPdf": "1.0.8",
-          "Microsoft.AspNet.Mvc.Futures": "5.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.10",
           "Microsoft.AspNetCore.Cors": "2.2.0",
           "Microsoft.AspNetCore.DataProtection": "6.0.10",
@@ -58,7 +56,6 @@
           "Microsoft.Extensions.Hosting.Abstractions": "6.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration": "6.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10",
-          "ModelService": "1.0.0",
           "Newtonsoft.Json": "13.0.1",
           "Serilog": "2.12.0",
           "Serilog.AspNetCore": "6.0.1",
@@ -447,17 +444,6 @@
         }
       },
       "MessagePackAnalyzer/2.1.152": {},
-      "Microsoft.AspNet.Mvc.Futures/5.0.0": {
-        "runtime": {
-          "lib/net40/Microsoft.Web.Mvc.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.11001.0"
-          }
-        },
-        "compile": {
-          "lib/net40/Microsoft.Web.Mvc.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection": "6.0.10",
@@ -558,21 +544,6 @@
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.1022.47617"
           }
-        }
-      },
-      "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/6.0.10": {
-        "dependencies": {
-          "Microsoft.AspNetCore.DataProtection": "6.0.10",
-          "Microsoft.EntityFrameworkCore": "6.0.11"
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.dll": {
-            "assemblyVersion": "6.0.10.0",
-            "fileVersion": "6.0.1022.47617"
-          }
-        },
-        "compile": {
-          "lib/net6.0/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.dll": {}
         }
       },
       "Microsoft.AspNetCore.Diagnostics.Abstractions/2.2.0": {},
@@ -4132,42 +4103,6 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "DataBaseService/1.0.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore": "6.0.10",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
-          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.10",
-          "Microsoft.EntityFrameworkCore": "6.0.11",
-          "Microsoft.EntityFrameworkCore.Relational": "6.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.11",
-          "Microsoft.Extensions.DependencyInjection": "6.0.1",
-          "ModelService": "1.0.0"
-        },
-        "runtime": {
-          "DataBaseService.dll": {}
-        },
-        "compile": {
-          "DataBaseService.dll": {}
-        }
-      },
-      "ModelService/1.0.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore": "6.0.10",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
-          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.10",
-          "Microsoft.EntityFrameworkCore": "6.0.11",
-          "Microsoft.EntityFrameworkCore.Relational": "6.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.11",
-          "Microsoft.Extensions.DependencyInjection": "6.0.1",
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "runtime": {
-          "ModelService.dll": {}
-        },
-        "compile": {
-          "ModelService.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Antiforgery.Reference/6.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -5953,13 +5888,6 @@
       "path": "messagepackanalyzer/2.1.152",
       "hashPath": "messagepackanalyzer.2.1.152.nupkg.sha512"
     },
-    "Microsoft.AspNet.Mvc.Futures/5.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-gsBaxIa6u10MEiEZsOawC30uT3L0XnnlX4n6GxHbQG8oxPvuLGZFxiyiIgY3P6WsLVUlxL/tZwmj5Al1kQ2+8g==",
-      "path": "microsoft.aspnet.mvc.futures/5.0.0",
-      "hashPath": "microsoft.aspnet.mvc.futures.5.0.0.nupkg.sha512"
-    },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -6036,13 +5964,6 @@
       "sha512": "sha512-a+otu5if+irySZxUT2jtk8h7kXll6se3sof5daFU8h3pM596sC0WluFi/xQd4JoBegvQ+4f9s/EBCcW6G9qE2Q==",
       "path": "microsoft.aspnetcore.dataprotection.abstractions/6.0.10",
       "hashPath": "microsoft.aspnetcore.dataprotection.abstractions.6.0.10.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/6.0.10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-d+aY/qtAB73JkYi+ADntKmMu27FiclAKOMIu8b5Q0nYJzZjuLU4kk9EHcT8fsQWR+s/gLh3NFtFnRkCeGihDwQ==",
-      "path": "microsoft.aspnetcore.dataprotection.entityframeworkcore/6.0.10",
-      "hashPath": "microsoft.aspnetcore.dataprotection.entityframeworkcore.6.0.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Diagnostics.Abstractions/2.2.0": {
       "type": "package",
@@ -7891,16 +7812,6 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
-    },
-    "DataBaseService/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ModelService/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery.Reference/6.0.0.0": {
       "type": "referenceassembly",

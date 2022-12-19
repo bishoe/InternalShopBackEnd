@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿using InternalShop;
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,7 +21,8 @@ namespace InternalShop.Reports.ExecuteSP
         }
         public IEnumerable<ReportDismissalnotice> ExecuteSPDismissalnotice(string SPName, [Optional] SqlParameter ParamValue)
         {
-            var result = _db.reportDismissalnotices.FromSqlRaw(SPName, ParamValue).ToList();
+            var result = _db.reportDismissalnotices.FromSqlRaw("select * from " + SPName, ParamValue).ToList();
+
             _db.Dispose();
             return (result);
         }
@@ -67,7 +68,7 @@ ExecuteSPDismissalnotice("dbo.SP_CreateReportDismissalnoticeById @Dismissalnotic
                                     <td>{5}</td>
                                     </tr>",
  _DismissalnoticeObject.DismissalnoticeId,
- _DismissalnoticeObject.MasterOFSToresId,
+ _DismissalnoticeObject.ManageStoreID,
  _DismissalnoticeObject.ProdouctName,
  _DismissalnoticeObject.BarCodeText,
 _DismissalnoticeObject.quantityProduct,
@@ -81,13 +82,13 @@ _DismissalnoticeObject.DateAdd);
 
  
 
-    public string GetHTMLString()
+    public string GetHTMLStringWithoutParam()
         {
            
 
                 var DismissalnoticeObject
                     =
-    ExecuteSPDismissalnotice("dbo.SP_CreateReportBranches");
+    ExecuteSPDismissalnotice("dbo.view_CreateReportDismissalnotice");
 
                 var sb = new StringBuilder();
                 sb.Append(@"
@@ -121,7 +122,7 @@ _DismissalnoticeObject.DateAdd);
                                     <td>{5}</td>
                                     </tr>",
      _DismissalnoticeObject.DismissalnoticeId,
-     _DismissalnoticeObject.MasterOFSToresId,
+     _DismissalnoticeObject.ManageStoreID,
      _DismissalnoticeObject.ProdouctName,
      _DismissalnoticeObject.BarCodeText,
     _DismissalnoticeObject.quantityProduct,
@@ -133,6 +134,7 @@ _DismissalnoticeObject.DateAdd);
                 return sb.ToString();
             }
 
-        }
+     
+    }
     }
 

@@ -10,6 +10,6 @@ using System.Threading.Tasks;
     {
          public IEnumerable<ReportSalesInvoiceById> ExecuteSPSalesInvoice(string SPName,[Optional]SqlParameter ParamValue);
 
-
+ 
     }
 }

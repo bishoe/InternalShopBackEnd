@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿using InternalShop;
 using InternalShop.Models;
 using System;
 using System.Collections.Generic;

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gqdwRV7oHVrIE8hPHPU5Qu/BccSpK4o68EuSynvxoDDK0cGsCFrBRoVHb/fCCUMxbEXEsZkkKNZvRoXErqCj6w==",
+  "dgSpecHash": "pIKjCm0SZKt+sisZ9QoNxvFMXNPWyF23A3X7JGMo7xeIUVDzZluy659fjj3adwm0AiYq1ypwtXd5Vf5az/8Hlg==",
   "success": true,
-  "projectFilePath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\InternalShop.csproj",
+  "projectFilePath": "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\InternalShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bishoe\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\bishoe\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
@@ -11,7 +11,6 @@
     "C:\\Users\\bishoe\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\bishoe\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\bishoe\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
-    "C:\\Users\\bishoe\\.nuget\\packages\\microsoft.aspnet.mvc.futures\\5.0.0\\microsoft.aspnet.mvc.futures.5.0.0.nupkg.sha512",
     "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
@@ -23,7 +22,6 @@
     "C:\\Users\\bishoe\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.10\\microsoft.aspnetcore.cryptography.keyderivation.6.0.10.nupkg.sha512",
     "C:\\Users\\bishoe\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\6.0.10\\microsoft.aspnetcore.dataprotection.6.0.10.nupkg.sha512",
     "C:\\Users\\bishoe\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\6.0.10\\microsoft.aspnetcore.dataprotection.abstractions.6.0.10.nupkg.sha512",
-    "C:\\Users\\bishoe\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.entityframeworkcore\\6.0.10\\microsoft.aspnetcore.dataprotection.entityframeworkcore.6.0.10.nupkg.sha512",
     "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.diagnostics.abstractions\\2.2.0\\microsoft.aspnetcore.diagnostics.abstractions.2.2.0.nupkg.sha512",
     "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.hosting\\2.2.0\\microsoft.aspnetcore.hosting.2.2.0.nupkg.sha512",
     "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
@@ -289,16 +287,5 @@
     "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Mvc.Futures 5.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Mvc.Futures",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

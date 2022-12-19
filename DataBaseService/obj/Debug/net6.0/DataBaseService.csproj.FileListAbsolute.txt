@@ -303,3 +303,11 @@ H:\InternalShop\InternalShop\InternalShop\InternalShop_\DataBaseService\obj\Debu
 H:\InternalShop\InternalShop\InternalShop\InternalShop_\DataBaseService\obj\Debug\net6.0\DataBaseService.pdb
 H:\InternalShop\InternalShop\InternalShop\InternalShop_\DataBaseService\obj\Debug\net6.0\DataBaseService.genruntimeconfig.cache
 H:\InternalShop\InternalShop\InternalShop\InternalShop_\DataBaseService\obj\Debug\net6.0\ref\DataBaseService.dll
+H:\InternalShop\InternalShopBackEnd\DataBaseService\obj\Debug\net6.0\DataBaseService.csproj.AssemblyReference.cache
+H:\InternalShop\InternalShopBackEnd\DataBaseService\obj\Debug\net6.0\DataBaseService.GeneratedMSBuildEditorConfig.editorconfig
+H:\InternalShop\InternalShopBackEnd\DataBaseService\obj\Debug\net6.0\DataBaseService.AssemblyInfoInputs.cache
+H:\InternalShop\InternalShopBackEnd\DataBaseService\obj\Debug\net6.0\DataBaseService.AssemblyInfo.cs
+H:\InternalShop\InternalShopBackEnd\DataBaseService\obj\Debug\net6.0\DataBaseService.csproj.CoreCompileInputs.cache
+H:\InternalShop\InternalShopBackEnd\DataBaseService\obj\Debug\net6.0\DataBaseService.dll
+H:\InternalShop\InternalShopBackEnd\DataBaseService\obj\Debug\net6.0\refint\DataBaseService.dll
+H:\InternalShop\InternalShopBackEnd\DataBaseService\obj\Debug\net6.0\DataBaseService.pdb

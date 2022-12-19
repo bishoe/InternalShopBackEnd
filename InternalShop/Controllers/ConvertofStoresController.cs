@@ -4,11 +4,7 @@ using InternalShop.ClassProject;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DataBaseService;
+ 
 using DinkToPdf;
 using System.IO;
 using Microsoft.Data.SqlClient;
@@ -48,7 +44,7 @@ namespace InternalShop.Controllers
 
             try
             {           
-                var ExecuteSPObject = _convertofStores.GetAllConvertofStoresAsync("dbo.SP_GetAllConvertOfStores");
+                var ExecuteSPObject = _convertofStores.GetAllConvertofStoresAsync("dbo.View_GetAllConvertOfStores");
 
                 if (ExecuteSPObject == null)
                 {

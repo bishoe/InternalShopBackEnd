@@ -106,15 +106,6 @@
       "MessagePackAnalyzer/2.1.152": {
         "type": "package"
       },
-      "Microsoft.AspNet.Mvc.Futures/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Web.Mvc.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Web.Mvc.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -304,23 +295,6 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/6.0.10": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.DataProtection": "6.0.10",
-          "Microsoft.EntityFrameworkCore": "6.0.10"
-        },
-        "compile": {
-          "lib/net6.0/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.dll": {
             "related": ".xml"
           }
         }
@@ -5637,46 +5611,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
-      },
-      "DataBaseService/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore": "6.0.10",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
-          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.10",
-          "Microsoft.EntityFrameworkCore": "6.0.11",
-          "Microsoft.EntityFrameworkCore.Relational": "6.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.11",
-          "Microsoft.Extensions.DependencyInjection": "6.0.1",
-          "ModelService": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/DataBaseService.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DataBaseService.dll": {}
-        }
-      },
-      "ModelService/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore": "6.0.10",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
-          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.10",
-          "Microsoft.EntityFrameworkCore": "6.0.11",
-          "Microsoft.EntityFrameworkCore.Relational": "6.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.11",
-          "Microsoft.Extensions.DependencyInjection": "6.0.1",
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "compile": {
-          "bin/placeholder/ModelService.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ModelService.dll": {}
-        }
       }
     }
   },
@@ -5808,19 +5742,6 @@
         "messagepackanalyzer.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
-      ]
-    },
-    "Microsoft.AspNet.Mvc.Futures/5.0.0": {
-      "sha512": "gsBaxIa6u10MEiEZsOawC30uT3L0XnnlX4n6GxHbQG8oxPvuLGZFxiyiIgY3P6WsLVUlxL/tZwmj5Al1kQ2+8g==",
-      "type": "package",
-      "path": "microsoft.aspnet.mvc.futures/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Microsoft.Web.Mvc.dll",
-        "license.txt",
-        "microsoft.aspnet.mvc.futures.5.0.0.nupkg.sha512",
-        "microsoft.aspnet.mvc.futures.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -5990,21 +5911,6 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.DataProtection.Abstractions.xml",
         "microsoft.aspnetcore.dataprotection.abstractions.6.0.10.nupkg.sha512",
         "microsoft.aspnetcore.dataprotection.abstractions.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/6.0.10": {
-      "sha512": "d+aY/qtAB73JkYi+ADntKmMu27FiclAKOMIu8b5Q0nYJzZjuLU4kk9EHcT8fsQWR+s/gLh3NFtFnRkCeGihDwQ==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.dataprotection.entityframeworkcore/6.0.10",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net6.0/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.dll",
-        "lib/net6.0/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.xml",
-        "microsoft.aspnetcore.dataprotection.entityframeworkcore.6.0.10.nupkg.sha512",
-        "microsoft.aspnetcore.dataprotection.entityframeworkcore.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Diagnostics.Abstractions/2.2.0": {
@@ -14731,24 +14637,12 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
-    },
-    "DataBaseService/1.0.0": {
-      "type": "project",
-      "path": "../DataBaseService/DataBaseService.csproj",
-      "msbuildProject": "../DataBaseService/DataBaseService.csproj"
-    },
-    "ModelService/1.0.0": {
-      "type": "project",
-      "path": "../../ModelService/ModelService.csproj",
-      "msbuildProject": "../../ModelService/ModelService.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "BuildBundlerMinifier >= 3.2.449",
-      "DataBaseService >= 1.0.0",
       "DinkToPdf >= 1.0.8",
-      "Microsoft.AspNet.Mvc.Futures >= 5.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.10",
       "Microsoft.AspNetCore.Cors >= 2.2.0",
       "Microsoft.AspNetCore.DataProtection >= 6.0.10",
@@ -14769,7 +14663,6 @@
       "Microsoft.Extensions.Hosting.Abstractions >= 6.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration >= 6.0.10",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.10",
-      "ModelService >= 1.0.0",
       "Newtonsoft.Json >= 13.0.1",
       "Serilog >= 2.12.0",
       "Serilog.AspNetCore >= 6.0.1",
@@ -14787,11 +14680,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\InternalShop.csproj",
+      "projectUniqueName": "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\InternalShop.csproj",
       "projectName": "InternalShop",
-      "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\InternalShop.csproj",
+      "projectPath": "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\InternalShop.csproj",
       "packagesPath": "C:\\Users\\bishoe\\.nuget\\packages\\",
-      "outputPath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\InternalShop\\obj\\",
+      "outputPath": "H:\\InternalShop\\InternalShopBackEnd\\InternalShop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder"
@@ -14810,14 +14703,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\DataBaseService\\DataBaseService.csproj": {
-              "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\InternalShop_\\DataBaseService\\DataBaseService.csproj"
-            },
-            "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj": {
-              "projectPath": "H:\\InternalShop\\InternalShop\\InternalShop\\ModelService\\ModelService.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -14837,10 +14723,6 @@
           "DinkToPdf": {
             "target": "Package",
             "version": "[1.0.8, )"
-          },
-          "Microsoft.AspNet.Mvc.Futures": {
-            "target": "Package",
-            "version": "[5.0.0, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
@@ -14981,17 +14863,5 @@
         "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Mvc.Futures 5.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Mvc.Futures",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

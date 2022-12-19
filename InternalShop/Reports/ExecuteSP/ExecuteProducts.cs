@@ -1,4 +1,4 @@
-﻿using DataBaseService;
+﻿
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -72,12 +72,12 @@ ExecuteSPProducts("dbo.SP_CreateReportProductsById @ProdouctsID", ParamValue);
         }
 
 
-        public string GetHTMLString()
+        public string GetHTMLStringWithoutParam()
         {
 
             var ProductsObject
                 =
-ExecuteSPProducts("dbo.SP_CreateReportProducts");
+ExecuteSPProducts("dbo.view_CreateReportProducts");
 
             var sb = new StringBuilder();
             sb.Append(@"

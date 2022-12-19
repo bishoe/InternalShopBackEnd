@@ -17,11 +17,7 @@ namespace InternalShop.Models
         public int StoreId { get; set; }
         [Required]
             public int SuppliersID { get; set; }
-        //[Required]
-        //public int SupplierRID { get; set; }
-        //[ForeignKey("ManageStoreID")]
-        //[Required]
-        //public int ManageStoreID { get; set; }
+    
         [Required]
         public int Billno { get; set; }
         [Required]

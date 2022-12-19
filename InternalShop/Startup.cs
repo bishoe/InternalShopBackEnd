@@ -1,4 +1,4 @@
-using DataBaseService;
+
 using DinkToPdf;
 using DinkToPdf.Contracts;
 using InternalShop.ClassProject;
@@ -64,8 +64,8 @@ namespace InternalShop
             services.AddIdentity<Appuser, IdentityRole>(opt => { }).AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-            services.AddDbContext<DataProtectionKeysContext>(options =>
-       options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContextCon"), x => x.MigrationsAssembly("InternalShop")));
+       //     services.AddDbContext<DataProtectionKeysContext>(options =>
+       //options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContextCon"), x => x.MigrationsAssembly("InternalShop")));
             #endregion
 
             #region Services
@@ -98,7 +98,7 @@ namespace InternalShop
            
             services.AddTransient<IReportExecutePermissionToEntertheStoreProduct, ExecutePermissionToEntertheStoreProductReport>();
 
-            services.AddTransient<IGetAllPermissionToEntertheStoreProduct, ExecuteGetAllPermissionToEntertheStoreProduct>();
+            //services.AddTransient<IGetAllPermissionToEntertheStoreProduct, ExecuteGetAllPermissionToEntertheStoreProduct>();
 
             services.AddTransient<IPermissionToEntertheStoreProduct, PermissionToEntertheStoreProductSVC>();
 

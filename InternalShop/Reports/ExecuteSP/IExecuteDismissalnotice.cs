@@ -12,6 +12,6 @@ namespace InternalShop.Reports.ExecuteSP
     {
         public IEnumerable<ReportDismissalnotice> ExecuteSPDismissalnotice(string SPName, [Optional] SqlParameter ParamValue);
         public string GetHTMLString([Optional] SqlParameter ParamValue);
-        //public string GetHTMLString();
+        public string GetHTMLStringWithoutParam();
     }
 }

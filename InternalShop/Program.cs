@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 using System.Diagnostics;
 using InternalShop.CustomText;
-using DataBaseService;
+
  
 namespace InternalShop
 {
@@ -25,11 +25,11 @@ namespace InternalShop
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
-                    var dpContext = services.GetRequiredService<DataProtectionKeysContext>();
+                    //var dpContext = services.GetRequiredService<DataProtectionKeysContext>();
                     //var functionSvc = services.GetRequiredService<IFunctionalSvc>();
                     //var countrySvc = services.GetRequiredService<ICountrySvc>();
 
-                    DbContextInitializer.Initialize(dpContext, context  ).Wait();
+                    //DbContextInitializer.Initialize(dpContext, context  ).Wait();
                      //   , functionSvc  
                    // , countrySvc
 

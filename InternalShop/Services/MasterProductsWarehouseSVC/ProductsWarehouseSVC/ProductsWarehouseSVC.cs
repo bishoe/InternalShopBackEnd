@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using DataBaseService;
+using InternalShop;
 using InternalShop.Models;
  using Serilog;
 using System;
