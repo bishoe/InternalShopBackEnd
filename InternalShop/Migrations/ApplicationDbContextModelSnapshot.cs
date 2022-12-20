@@ -314,7 +314,7 @@ namespace InternalShop.Migrations
                     b.Property<DateTime>("DateEdit")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MasterOFSToresId")
+                    b.Property<int>("ManageStoreId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProdouctsID")

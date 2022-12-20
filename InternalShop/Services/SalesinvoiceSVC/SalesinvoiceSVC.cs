@@ -185,12 +185,13 @@ namespace InternalShop.ClassProject.SalesinvoiceSVC
 
         }
 
-       
+        public IEnumerable<SalesinvoiceObject> GetAllsalesinvoice(string SPName)
+        {
+
+            return _db.salesinvoiceObjects.FromSqlRaw("select * from " + SPName).ToList();
 
 
-
-
-
+        }
     }
 }
 

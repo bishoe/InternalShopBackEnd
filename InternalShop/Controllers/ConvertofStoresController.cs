@@ -62,6 +62,7 @@ namespace InternalShop.Controllers
             }
             return Ok();
         }
+        [HttpGet]
 
 
         [HttpGet("{IdConvertofStores}")]

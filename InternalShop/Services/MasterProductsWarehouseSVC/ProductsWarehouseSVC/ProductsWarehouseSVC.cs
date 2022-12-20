@@ -230,5 +230,10 @@ namespace InternalShop.ClassProject.MasterProductsWarehouseSVC.ProductsWarehouse
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<ProductsWarehouseObjectT> GetAllProductsWarehouse(string SPName)
+        {
+            return _db.productsWarehouseObjectTs.FromSqlRaw("select * from " + SPName).ToList();
+        }
     }
 }

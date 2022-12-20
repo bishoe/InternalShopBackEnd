@@ -8,7 +8,7 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
 {
  public   interface IDismissalnotice
     {
-        Task<List<DismissalnoticeT>> GetAllDismissalnoticeAsync();
+       IEnumerable<DismissalnoticeT> GetAllDismissalnoticeAsync(string SPName);
 
         Task<DismissalnoticeT> GetDismissalnoticeByidAsync(int DismissalnoticeId);
 

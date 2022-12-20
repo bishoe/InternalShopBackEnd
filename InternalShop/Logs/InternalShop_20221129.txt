@@ -1378,7 +1378,7 @@ Timestamp - 11/30/2022 10:36:32 AM +02:00 | Level - Error |
 contextType : "DataBaseService.ApplicationDbContext"
 newline : "
 "
-error : "System.InvalidOperationException: The required column 'MasterOFSToresID' was not present in the results of a 'FromSql' operation.
+error : "System.InvalidOperationException: The required column 'ManageStoreId' was not present in the results of a 'FromSql' operation.
    at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.BuildIndexMap(IReadOnlyList`1 columnNames, DbDataReader dataReader)
    at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
@@ -1398,11 +1398,11 @@ UserName : "bishoe"
 ProcessId : 1680
 ProcessName : "iisexpress"
 ----------------------EXCEPTION DETAILS-------------------------------
-Exception - System.InvalidOperationException: The required column 'MasterOFSToresID' was not present in the results of a 'FromSql' operation.
+Exception - System.InvalidOperationException: The required column 'ManageStoreId' was not present in the results of a 'FromSql' operation.
    at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.BuildIndexMap(IReadOnlyList`1 columnNames, DbDataReader dataReader)
    at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
    at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.MoveNext()StackTrace -    at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.BuildIndexMap(IReadOnlyList`1 columnNames, DbDataReader dataReader)
    at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
-   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.MoveNext()Message - The required column 'MasterOFSToresID' was not present in the results of a 'FromSql' operation.Source - Microsoft.EntityFrameworkCore.RelationalInnerException - ---------------------------------------------------------------------------
+   at Microsoft.EntityFrameworkCore.Query.Internal.FromSqlQueryingEnumerable`1.Enumerator.MoveNext()Message - The required column 'ManageStoreId' was not present in the results of a 'FromSql' operation.Source - Microsoft.EntityFrameworkCore.RelationalInnerException - ---------------------------------------------------------------------------

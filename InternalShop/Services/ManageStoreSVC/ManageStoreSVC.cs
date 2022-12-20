@@ -77,22 +77,22 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
             return true;
         }
 
-        public async Task<List<ManageStoreT>> GetAllManageStoreAsync()
+        public   IEnumerable<ManageStoreT> GetAllManageStoreAsync(string SPName)
         {
-            List<ManageStoreT> ManageStore = new();
-            try
-            {
-                ManageStore = await _db.ManageStore.OrderBy(x => x.ManageStorename).ToListAsync();
+            //List<ManageStoreT> ManageStore = new();
+            //try
+            //{
+            //    ManageStore = await _db.ManageStore.OrderBy(x => x.ManageStorename).ToListAsync();
 
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
-                                     ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
+            //                         ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+            //}
             GC.Collect();
 
-            return ManageStore;
+            return _db.ManageStore.FromSqlRaw("select * from " + SPName).ToList();
         }
 
         public async Task<ManageStoreT> GetManageStoreByidAsync(int ManageStoreId)
@@ -144,10 +144,10 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
 
                 return false;
             } }
-            private bool MasterOFSToresExists(int MasterOFSToresId)
+            private bool MasterOFSToresExists(int ManageStoreId)
             {
 
-                return _db.ManageStore.Any(x => x.ManageStoreID == MasterOFSToresId);
+                return _db.ManageStore.Any(x => x.ManageStoreID == ManageStoreId);
             }
        
     }

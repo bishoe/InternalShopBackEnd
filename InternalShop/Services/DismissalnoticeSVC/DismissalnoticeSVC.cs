@@ -3,6 +3,7 @@ using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,24 +20,27 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
         }
       
 
-        public async Task<List<DismissalnoticeT>> GetAllDismissalnoticeAsync()
+        public  IEnumerable<DismissalnoticeT> GetAllDismissalnoticeAsync(string SPName)
         {
             List<DismissalnoticeT> dismissalnotice = new();
 
-            try
-            {
-                dismissalnotice =await _db.Dismissalnotice.OrderBy(x => x.DismissalnoticeId).ToListAsync();
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    dismissalnotice =await _db.Dismissalnotice.OrderBy(x => x.DismissalnoticeId).ToListAsync();
+            //}
+            //catch (Exception ex)
+            //{
 
-                Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
-                      ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+            //    Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
+            //          ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
 
-            }
+            //}
+
+
             GC.Collect();
 
-            return dismissalnotice;
+            return    _db.Dismissalnotice.FromSqlRaw("select * from " + SPName).ToList();
+
         }
 
         public async Task<DismissalnoticeT> GetDismissalnoticeByidAsync(int DismissalnoticeId)
@@ -62,7 +66,7 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
 
             return GetIdDismissalnotice;
         }
-  public async Task<ResponseObject> CreateDismissalnoticeAsync(DismissalnoticeT dismissalnotice)
+        public async Task<ResponseObject> CreateDismissalnoticeAsync(DismissalnoticeT dismissalnotice)
         {
 
 
@@ -73,7 +77,7 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
 
             var Adddismissalnotice = new DismissalnoticeT
             {
-                MasterOFSToresId = dismissalnotice.MasterOFSToresId,
+                ManageStoreId = dismissalnotice.ManageStoreId,
                 ProdouctsID = dismissalnotice.ProdouctsID,
                 quantityProduct = dismissalnotice.quantityProduct,
                 DateAdd = dismissalnotice.DateAdd,
@@ -134,7 +138,7 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
             }
 }
 
-      private bool  dismissalnoticeExists(int IdDismissalnotice)
+        private bool  dismissalnoticeExists(int IdDismissalnotice)
         {
 
             return _db.Dismissalnotice.Any(x => x.DismissalnoticeId == IdDismissalnotice);

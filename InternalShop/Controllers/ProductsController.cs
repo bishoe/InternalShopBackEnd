@@ -14,6 +14,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using InternalShop.ClassProject.QuantityProductSVC;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
 
 namespace InternalShop.Controllers
 {
@@ -25,24 +27,72 @@ namespace InternalShop.Controllers
         private readonly IProducts _products;
         private IConverter _converter;
         private readonly IExecuteProducts  _executeProducts;
+        private IDistributedCache _cache;
+        private const string ProductsListCacheKey = "ProductsList";
+        private ILogger<ProductsController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
-        public ProductsController(ApplicationDbContext db, IProducts products, IConverter converter, IExecuteProducts executeProducts
+        public ProductsController(ApplicationDbContext db, IProducts products, IConverter converter, IExecuteProducts executeProducts, IDistributedCache cache, ILogger<ProductsController> logger
+
 )
         {
             _db = db;
             _products = products;
             _converter = converter;
             _executeProducts = executeProducts;
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
         }
         [HttpGet]
         public async Task<IActionResult> GetALLProducts()
         {
-            var _GetALLProducts = await _products.GetProductsAsync();
-            if (_GetALLProducts == null)
+            //var _GetALLProducts = await _products.GetProductsAsync();
+            //if (_GetALLProducts == null)
+            //{
+            //    return BadRequest();
+            //}
+            //return Ok(_GetALLProducts);
+
+
+
+            if (_cache.TryGetValue(ProductsListCacheKey, out IEnumerable<ProductsT>? Products))
             {
-                return BadRequest();
+                _logger.Log(LogLevel.Information, "Categories list found in cache.");
+
             }
-            return Ok(_GetALLProducts);
+            else
+            {
+
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("Categorieslist", out Products))
+                    {
+                        _logger.Log(LogLevel.Information, "Categories list found in cache.");
+                    }
+                    else
+                    {
+
+
+                        _logger.Log(LogLevel.Information, "Categories list not found in cache. Fetching from database.");
+                        Products = _products.GetProductsAsync("dbo.view_CreateReportProducts");
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(ProductsListCacheKey, Products, cacheEntryOptions);
+
+                    }
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
+            }
+            return Ok(Products);
+
+
+
         }
 
       

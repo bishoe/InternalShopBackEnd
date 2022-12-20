@@ -15,6 +15,9 @@ using DinkToPdf.Contracts;
 using System.IO;
 using DinkToPdf;
 using InternalShop.Reports.ReportSalesInvoice;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
+using InternalShop.ClassProject;
 
 namespace InternalShop.Controllers
 {
@@ -27,15 +30,22 @@ namespace InternalShop.Controllers
         //private readonly IReportSalesInvoice _reportSalesInvoice;
         private  IConverter _converter;
         private readonly IReportS _ReportSalesInvoice;
+        private IDistributedCache _cache;
+        private const string SalesinvoiceListCacheKey = "SalesinvoiceList";
+        private ILogger<SalesinvoiceController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
         public SalesinvoiceController(ISalesinvoice salesinvoice, ApplicationDbContext db, IConverter converter, IReportS reportSalesInvoice
-, IReportS ReportSalesInvoice
+, IReportS ReportSalesInvoice, IDistributedCache cache, ILogger<SalesinvoiceController> logger
+
 )
         {
             _db = db;
             _salesinvoice = salesinvoice;
             _converter = converter;
              _ReportSalesInvoice = ReportSalesInvoice;
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
         }
         [HttpGet("{SellingMasterID}")]
@@ -202,6 +212,48 @@ namespace InternalShop.Controllers
             _converter.Convert(pdf);
 
             return Ok("Successfully created PDF document.");
+
+        }
+
+
+        public IActionResult GetAllsalesinvoice(string SPName)
+        {
+
+
+            if (_cache.TryGetValue(SalesinvoiceListCacheKey, out IEnumerable<SalesinvoiceObject>? Salesinvoice))
+            {
+                _logger.Log(LogLevel.Information, "Categories list found in cache.");
+
+            }
+            else
+            {
+
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("Categorieslist", out Salesinvoice))
+                    {
+                        _logger.Log(LogLevel.Information, "Categories list found in cache.");
+                    }
+                    else
+                    {
+
+
+                        _logger.Log(LogLevel.Information, "Categories list not found in cache. Fetching from database.");
+                        Salesinvoice = _salesinvoice.GetAllsalesinvoice();
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(SalesinvoiceListCacheKey, Salesinvoice, cacheEntryOptions);
+
+                    }
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
+            }
+            return Ok(Salesinvoice);
 
         }
 

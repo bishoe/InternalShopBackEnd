@@ -11,7 +11,7 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
 
         // insert products in stores 
         //ManageStoreT   MasterOFstores 
-        Task<List<ManageStoreT>> GetAllManageStoreAsync();
+        IEnumerable<ManageStoreT> GetAllManageStoreAsync(string SPName);
 
         Task<ManageStoreT> GetManageStoreByidAsync(int ManageStoreId);
 

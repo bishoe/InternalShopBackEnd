@@ -16,7 +16,7 @@ namespace InternalShop.Models
         [MaxLength(250)]
         public string Notes { get; set; }
          [Required]
-        //public int MasterOFSToresId { get; set; }
+        //public int ManageStoreId { get; set; }
         public int ManageStoreIdFrom { get; set; }
         [Required]
         public int ManageStoreIdTo { get; set; }
@@ -43,7 +43,7 @@ namespace InternalShop.Models
         [MaxLength(250)]
         public string? Notes { get; set; }
         [Required]
-        //public int MasterOFSToresId { get; set; }
+        //public int ManageStoreId { get; set; }
         public int ManageStoreIdFrom { get; set; }
         //[Required]
         //public int ManageStoreIdTo { get; set; }

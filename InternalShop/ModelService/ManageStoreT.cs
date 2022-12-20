@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
-    public class ManageStoreT    /// Stores   MasterOFSToresID
+    public class ManageStoreT    /// Stores   ManageStoreId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

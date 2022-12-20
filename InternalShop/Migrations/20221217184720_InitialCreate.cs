@@ -153,7 +153,7 @@ namespace InternalShop.Migrations
                 {
                     DismissalnoticeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MasterOFSToresId = table.Column<int>(type: "int", nullable: false),
+                    ManageStoreId = table.Column<int>(type: "int", nullable: false),
                     ProdouctsID = table.Column<int>(type: "int", nullable: false),
                     quantityProduct = table.Column<int>(type: "int", nullable: false),
                     DateAdd = table.Column<DateTime>(type: "datetime2", nullable: false),

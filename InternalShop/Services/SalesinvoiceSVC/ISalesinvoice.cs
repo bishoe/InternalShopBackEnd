@@ -12,8 +12,8 @@ namespace InternalShop.ClassProject.SalesinvoiceSVC
         //        SalesinvoiceT salesinvoice,SalesinvoiceObject salesinvoiceObject);
         //}
         public Task<ResponseObject> CreateSalesinvoiceAsync(   SalesinvoiceObject salesinvoiceObject);
-       
 
+        IEnumerable<SalesinvoiceObject> GetAllsalesinvoice(string SPName);   
         /// <summary>
         /// Get new Invoice Report
         /// </summary>

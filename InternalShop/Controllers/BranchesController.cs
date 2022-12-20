@@ -4,15 +4,17 @@ using DinkToPdf.Contracts;
 using InternalShop.ClassProject.BranchesSVC;
 using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+
 using Microsoft.AspNetCore.Mvc;
  using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Caching.Memory;
+
  using Microsoft.Extensions.Logging;
-  
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.Distributed;
+
+
 namespace InternalShop.Controllers
 {
     [Route("api/[controller]")]
@@ -22,12 +24,12 @@ namespace InternalShop.Controllers
         private readonly IBranches _Branches;
         private IConverter _converter;
         private readonly IExecuteBranches _executeBranches;
-        private IMemoryCache _cache;
+        private IDistributedCache _cache;
         private const string BRANCHESListCacheKey = "BRANCHESList";
         private ILogger<BranchesController> _logger;
         private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
-        public BranchesController(IBranches branches, IConverter converter, IExecuteBranches executeBranches, IMemoryCache cache, ILogger<BranchesController> logger)
+        public BranchesController(IBranches branches, IConverter converter, IExecuteBranches executeBranches, IDistributedCache cache, ILogger<BranchesController> logger)
         {
 
             _Branches = branches;
@@ -44,7 +46,7 @@ namespace InternalShop.Controllers
         {
            
  
-                if (_cache.TryGetValue(BRANCHESListCacheKey, out IEnumerable<IBranches> Branches))
+                if (_cache.TryGetValue(BRANCHESListCacheKey, out IEnumerable<BranchesReportT>? Branches))
                 {
                     _logger.Log(LogLevel.Information, "Branches list found in cache.");
 
@@ -57,22 +59,21 @@ namespace InternalShop.Controllers
                         await semaphore.WaitAsync();
                         if (_cache.TryGetValue("Brancheslist", out Branches))
                         {
-                            _logger.Log(LogLevel.Information, "Employee list found in cache.");
+                            _logger.Log(LogLevel.Information, "Branches list found in cache.");
                         }
                         else
                         {
 
 
                             _logger.Log(LogLevel.Information, "Branches list not found in cache. Fetching from database.");
-                        Branches = _Branches.GETALLBRANCHESASYNC();
-                            var cacheEntryOptions = new MemoryCacheEntryOptions()
-                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
-                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600))
-                            .SetPriority(CacheItemPriority.Normal)
-                            .SetSize(1024);
-                            _cache.Set(BRANCHESListCacheKey, Branches, cacheEntryOptions);
-                        }
+                        Branches = _Branches.GETALLBRANCHESASYNC("dbo.view_CreateReportBranches");
+                            var cacheEntryOptions = new DistributedCacheEntryOptions()
+                                .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                                .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(BRANCHESListCacheKey, Branches, cacheEntryOptions);
+
                     }
+                }
                     finally
                     {
                         semaphore.Release();

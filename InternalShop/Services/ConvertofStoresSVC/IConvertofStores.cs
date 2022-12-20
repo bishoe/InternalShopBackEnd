@@ -17,7 +17,8 @@ namespace InternalShop.ClassProject.ConvertofStoresSVC
 
         Task<bool> UpdateConvertofStoresAsync(int ConvertofStoresId, ConvertofStoresT convertofStoresT  );
         Task<bool> DeleteConvertofStoresAsync(int ConvertofStoresId);
-        public IEnumerable<object> GetAllConvertofStoresAsync(string SPName);
+        public IEnumerable<ConvertofStoresT> GetAllConvertofStoresAsync(string SPName);
+        //public IEnumerable<ConvertofStoresT> GetAllConvertofStores();
 
 
     }

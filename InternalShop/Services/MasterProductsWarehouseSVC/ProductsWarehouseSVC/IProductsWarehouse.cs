@@ -16,5 +16,7 @@ namespace InternalShop.ClassProject.MasterProductsWarehouseSVC.ProductsWarehouse
         Task <ResponseObject> GetNoColumn(int NoColumn);
         Task<ResponseObject> AddFirstRowINDB(MasterProductsWarehouseT masterProductsWarehouse);
 
+        IEnumerable<ProductsWarehouseObjectT> GetAllProductsWarehouse(string SPName);
+
     }
 }

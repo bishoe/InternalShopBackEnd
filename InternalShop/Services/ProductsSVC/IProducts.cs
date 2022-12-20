@@ -8,7 +8,7 @@ namespace InternalShop.ClassProject
 {
   public  interface IProducts
     {
-        Task<List<ProductsT>> GetProductsAsync();
+        IEnumerable<ProductsT> GetProductsAsync(string SPName);
 
          Task<ProductsT> GetProductsByIdAsync(int ProdouctsID);
         Task<ProductsT> GetProductbyBarcode(int Barcode);

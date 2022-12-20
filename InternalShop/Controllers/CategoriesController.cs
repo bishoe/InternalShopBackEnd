@@ -13,8 +13,14 @@ using System.IO;
 using DinkToPdf.Contracts;
 using InternalShop.Reports.ExecuteSP;
 using InternalShop;
+using InternalShop.Controllers;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Caching.Distributed;
+using InternalShop.ClassProject.BranchesSVC;
+using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
 
-namespace OnlineShop.Controllers
+namespace InternalShop.Controllers
 {
     [Route("api/[controller]")]
     //[ApiController]
@@ -23,22 +29,65 @@ namespace OnlineShop.Controllers
         private readonly ICategories _categories;
         private readonly ApplicationDbContext _db;
         IConverter _converter; IExecuteCategories _executeCategories;
-        public CategoriesController(ICategories categories, ApplicationDbContext db, IConverter converter, IExecuteCategories executeCategories
+        private IDistributedCache _cache;
+        private const string CategoriesListCacheKey = "CategoriesList";
+        private ILogger<CategoriesController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+
+
+        public CategoriesController(ICategories categories, ApplicationDbContext db, IConverter converter, IExecuteCategories executeCategories, IDistributedCache cache, ILogger<CategoriesController> logger
 )
         {
             _db = db;
             _categories = categories;
             _converter = converter;
             _executeCategories = executeCategories;
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
         }
         // GET All Categories
         [HttpGet]
         public async Task<IActionResult> GetCategories()
         {
-            var categories = await _categories.GeTCategoriesAsync();
+            //var categories =   _categories.GeTCategoriesAsync();
 
-            return Ok(categories);
+            //return Ok(categories);
+
+            if (_cache.TryGetValue(CategoriesListCacheKey, out IEnumerable<CategoriesT>? Categories))
+            {
+                _logger.Log(LogLevel.Information, "Categories list found in cache.");
+
+            }
+            else
+            {
+
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("Categorieslist", out Categories))
+                    {
+                        _logger.Log(LogLevel.Information, "Categories list found in cache.");
+                    }
+                    else
+                    {
+
+
+                        _logger.Log(LogLevel.Information, "Categories list not found in cache. Fetching from database.");
+                        Categories = _categories.GeTCategoriesAsync("dbo.view_CreateReportCategories");
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(CategoriesListCacheKey, Categories, cacheEntryOptions);
+
+                    }
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
+            }
+            return Ok(Categories);
         }
         //[Route("[action]")]
         // GETById api/Categories/1

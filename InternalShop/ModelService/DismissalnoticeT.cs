@@ -14,7 +14,7 @@ namespace InternalShop.Models
         public int DismissalnoticeId { get; set; }
         [Required]
 
-        public int MasterOFSToresId { get; set; }
+        public int ManageStoreId { get; set; }
         [Required]
 
         public int ProdouctsID { get; set; }

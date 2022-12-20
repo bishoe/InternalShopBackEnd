@@ -60,7 +60,15 @@ namespace InternalShop.ClassProject.QuantityProductSVC
 
         }
 
-     
+        public IEnumerable<QuantityProductT> GetAllquantityProducts(string SPName)
+        {
+
+            GC.Collect();
+
+            return _db.QuantityProducts.FromSqlRaw("select * from " + SPName).ToList();
+
+
+        }
 
         public async Task<QuantityProductT> GetQuantityProductBYIDandManageStoreIdAsync(int manageStoreID, int ProdouctsID)
         {

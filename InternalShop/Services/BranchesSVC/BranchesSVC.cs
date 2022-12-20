@@ -57,26 +57,25 @@ namespace InternalShop.ClassProject.BranchesSVC
 
         }
 
-        public async Task<List<BranchesT>> GETALLBRANCHESASYNC()
+        public   IEnumerable<BranchesReportT> GETALLBRANCHESASYNC(string SPName)
         {
-            List<BranchesT> _branchesModel = new ();
-            try
-            {
-                _branchesModel = await _db.Branches.OrderBy(x => x.BranchName).ToListAsync();
+             //try
+            //{
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
-                      ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+            //    Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
+            //          ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
 
-            }
+            //}
             GC.Collect();
 
-            return _branchesModel;
+            //return _branchesModel;
+            return _db.BranchesReport.FromSqlRaw("select * from " + SPName).ToList();
 
-
+ 
         }
 
         public async Task<BranchesT> GETBRANCHByidASYNC(int BranchCode)

@@ -12,6 +12,7 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
     public class PermissionToEntertheStoreProductSVC : IPermissionToEntertheStoreProduct
     {
         private readonly ApplicationDbContext _db;
+
         public PermissionToEntertheStoreProductSVC(ApplicationDbContext db)
         {
             _db = db;
@@ -74,10 +75,11 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
             return true;
         }
 
-        public IEnumerable<object> GetAllPermissionToEntertheStoreProductAsync(string SPName)
+        public IEnumerable<ReportPermissionToEntertheStoreProduct> GetAllPermissionToEntertheStoreProductAsync(string SPName)
         {
-            var result = _db.reportPermissionToEntertheStoreProducts.FromSqlRaw(SPName).ToList();
-            return result;
+
+            return _db.reportPermissionToEntertheStoreProducts.FromSqlRaw("select * from " + SPName).ToList();
+            
 
 
 

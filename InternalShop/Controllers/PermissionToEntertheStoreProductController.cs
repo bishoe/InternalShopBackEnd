@@ -13,6 +13,9 @@ using DinkToPdf;
 using System.IO;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
+using InternalShop.ClassProject;
 
 namespace InternalShop.Controllers
 {
@@ -25,11 +28,15 @@ namespace InternalShop.Controllers
 
         private readonly IPermissionToEntertheStoreProduct _IPermissionToEntertheStoreProduct;
         private readonly IReportExecutePermissionToEntertheStoreProduct _reportExecutePermissionToEntertheStoreProduct;
+        private IDistributedCache _cache;
+        private const string PermissionToEntertheStoreProductListCacheKey = "PermissionToEntertheStoreProductList";
+        private ILogger<PermissionToEntertheStoreProductController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
- 
+
         //private readonly IGetAllPermissionToEntertheStoreProduct _getAllPermissionToEntertheStoreProduct;
 
- 
+
         public PermissionToEntertheStoreProductController(
 
 
@@ -40,9 +47,10 @@ namespace InternalShop.Controllers
 
       //IGetAllPermissionToEntertheStoreProduct getAllPermissionToEntertheStoreProduct ,
     
-      IReportExecutePermissionToEntertheStoreProduct  reportExecutePermissionToEntertheStoreProduct
+      IReportExecutePermissionToEntertheStoreProduct  reportExecutePermissionToEntertheStoreProduct, IDistributedCache cache, ILogger<PermissionToEntertheStoreProductController> logger
 
- 
+
+
             )
         {
               _converter = converter; 
@@ -50,31 +58,59 @@ namespace InternalShop.Controllers
             _IPermissionToEntertheStoreProduct = IPermissionToEntertheStoreProduct;
             //_getAllPermissionToEntertheStoreProduct = getAllPermissionToEntertheStoreProduct;
             _reportExecutePermissionToEntertheStoreProduct = reportExecutePermissionToEntertheStoreProduct;
-          }
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        }
         [HttpGet]
-        public IActionResult GetAllPermissionToEntertheStoreProduct()
+        public async Task <IActionResult> GetAllPermissionToEntertheStoreProduct()
         {
-            try
+            //try
+            //{
+
+            //    var ExecuteSPObject = _IPermissionToEntertheStoreProduct.GetAllPermissionToEntertheStoreProductAsync("dbo.view_PermissionToEntertheStoreProduct");
+
+            //    return Ok(ExecuteSPObject);
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw ex.InnerException;
+            //}
+            if (_cache.TryGetValue(PermissionToEntertheStoreProductListCacheKey, out IEnumerable<ReportPermissionToEntertheStoreProduct>? ReportPermissionToEntertheStoreProducts))
             {
-                //var bv =await  _db.PermissionToEntertheStoreProduct.Include
-                //        (Per => Per.Products).
-                //        ThenInclude(s => s.PermissionToEntertheStoreProduct).ThenInclude(MStore => MStore.ManageStore)
-                //        .OrderBy(p => p.Products.ProdouctName).ToList();
+                _logger.Log(LogLevel.Information, "permissionToEntertheStoreProductT list found in cache.");
 
-                //var GetAllPermissionToEntertheStoreProductAsync = await _IPermissionToEntertheStoreProduct.GetAllPermissionToEntertheStoreProductAsync();
-
-                //var sqlParms = new SqlParameter { ParameterName = "@SellingMasterID", Value = ParamValue };
-
-                var ExecuteSPObject = _IPermissionToEntertheStoreProduct.GetAllPermissionToEntertheStoreProductAsync("dbo.SP_PermissionToEntertheStoreProduct");
-
-                return Ok(ExecuteSPObject);
             }
-            catch (Exception ex)
+            else
             {
 
-                throw ex.InnerException;
-            }
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("permissionToEntertheStoreProductTlist", out ReportPermissionToEntertheStoreProducts))
+                    {
+                        _logger.Log(LogLevel.Information, "permissionToEntertheStoreProductTlist list found in cache.");
+                    }
+                    else
+                    {
 
+
+                        _logger.Log(LogLevel.Information, "permissionToEntertheStoreProductTlist list not found in cache. Fetching from database.");
+                        ReportPermissionToEntertheStoreProducts = _IPermissionToEntertheStoreProduct.GetAllPermissionToEntertheStoreProductAsync("dbo.view_PermissionToEntertheStoreProduct");
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(PermissionToEntertheStoreProductListCacheKey, ReportPermissionToEntertheStoreProducts, cacheEntryOptions);
+
+                    }
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
+            }
+            return Ok(ReportPermissionToEntertheStoreProducts);
 
 
         }

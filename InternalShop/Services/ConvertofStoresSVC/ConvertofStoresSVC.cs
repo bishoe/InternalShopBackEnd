@@ -158,11 +158,17 @@ namespace InternalShop.ClassProject.ConvertofStoresSVC
             return _db.ConvertofStores.Any(x => x.ConvertofStoresId == IdConvertofStores);
         }
 
-        public IEnumerable<object> GetAllConvertofStoresAsync(string SPName)
+        public IEnumerable<ConvertofStoresT> GetAllConvertofStoresAsync(string SPName)
         {
-            var result = _db.reportConvertofStoresTs.FromSqlRaw("select * from " + SPName).ToList();
+            return _db.ConvertofStores.FromSqlRaw("select * from " + SPName).ToList();
 
-            return result;
+            //return result;
         }
+
+        //public IEnumerable<ConvertofStoresT> GetAllConvertofStores()
+        //{
+        //    GC.Collect();
+        // return _db.ConvertofStores.ToList();
+        //}
     }
 }

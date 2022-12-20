@@ -9,7 +9,7 @@ namespace InternalShop.ClassProject
 {
    public interface ICategories
     {
-          Task<List<CategoriesT>> GeTCategoriesAsync();
+           IEnumerable<CategoriesT> GeTCategoriesAsync(string SPName);
           Task<CategoriesT> GeTCategoriesByIdAsync(int CategoryProductId);
 
           Task<ResponseObject> CreateCategoriesAsync(CategoriesT categoriesViewModel);

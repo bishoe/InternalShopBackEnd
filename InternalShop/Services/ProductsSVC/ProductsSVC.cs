@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
  using Serilog;
 using InternalShop.ClassProject.QuantityProductSVC;
+using System.Collections;
 
 namespace InternalShop.ClassProject.ProductsSVC
 {
@@ -117,25 +118,26 @@ namespace InternalShop.ClassProject.ProductsSVC
 
 
 
-        public async Task<List<ProductsT>> GetProductsAsync()
+        public   IEnumerable<ProductsT> GetProductsAsync(string SPName)
         {
 
-            List<ProductsT> _productsModel = new List<ProductsT>();
-            try
-            {
-                _productsModel = await _db.Products.OrderBy(x => x.ProdouctName).ToListAsync();
+            //List<ProductsT> _productsModel = new List<ProductsT>();
+            //try
+            //{
+            //    _productsModel = await _db.Products.OrderBy(x => x.ProdouctName).ToListAsync();
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                Log.Error("Error while creating product {Error} {StackTrace} {InnerException} {Source}",
-                      ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+            //    Log.Error("Error while creating product {Error} {StackTrace} {InnerException} {Source}",
+            //          ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
 
-            }
+            //}
+
             GC.Collect();
 
-            return _productsModel;
+            return _db.Products.FromSqlRaw("select * from " + SPName).ToList();
 
 
 

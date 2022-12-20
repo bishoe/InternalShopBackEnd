@@ -18,7 +18,7 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
         Task<bool> UpdatePermissionToEntertheStoreProductAsync(int PermissionToEntertheStoreProductId, PermissionToEntertheStoreProductT PermissionToEntertheStoreProduct );
 
         Task<bool> DeletePermissionToEntertheStoreProductAsync(int PermissionToEntertheStoreProductId);
-        public IEnumerable<object> GetAllPermissionToEntertheStoreProductAsync(string SPName);
+        public IEnumerable<ReportPermissionToEntertheStoreProduct> GetAllPermissionToEntertheStoreProductAsync(string SPName);
 
 
     }

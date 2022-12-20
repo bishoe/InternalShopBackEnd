@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using Stimulsoft.Blockly.Model;
 
 namespace InternalShop.ClassProject
 {
@@ -20,23 +22,24 @@ namespace InternalShop.ClassProject
         {
             _db = applicationDbContext;
         }
-        public async Task<List<CategoriesT>> GeTCategoriesAsync()
+        public IEnumerable<CategoriesT> GeTCategoriesAsync(string SPName)
         {
-            List<CategoriesT> CategoriesModel = new ();
-            try
-            {
-                CategoriesModel = await _db.Categories.OrderBy(x => x.CategoryName).ToListAsync();
+            //List<CategoriesT> CategoriesModel = new ();
+            //try
+            //{
+                
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
-                                      ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
-            }
+            //    Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
+            //                          ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+            //}
             GC.Collect();
+            return _db.Categories. FromSqlRaw("select * from " + SPName).ToList();
 
-            return CategoriesModel;
+
         }
         public async Task<CategoriesT> GeTCategoriesByIdAsync(int CategoryProductId)
         {

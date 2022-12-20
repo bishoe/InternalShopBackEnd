@@ -13,6 +13,9 @@ using System.IO;
 using System.Data.SqlClient;
 using DinkToPdf.Contracts;
 using InternalShop.Reports.ExecuteSP;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
+using InternalShop.ClassProject;
 
 namespace InternalShop.Controllers
 {
@@ -24,13 +27,18 @@ namespace InternalShop.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private IConverter _converter;
         private readonly IExecuteProductsWarehouse _executeProductsWarehouse;
+        private IDistributedCache _cache;
+        private const string ProductsWarehouseListCacheKey = "ProductsWarehouseList";
+        private ILogger<ProductsWarehouseController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
 
         //private readonly IMasterProductsWarehouse _masterProductsWarehouse;
         private readonly IProductsWarehouse _productsWarehouse;
 
 
-        public ProductsWarehouseController(ApplicationDbContext db, IProductsWarehouse productsWarehouse, IHttpContextAccessor httpContextAccessor, IConverter converter, IExecuteProductsWarehouse executeProductsWarehouse
+        public ProductsWarehouseController(ApplicationDbContext db, IProductsWarehouse productsWarehouse, IHttpContextAccessor httpContextAccessor, IConverter converter, IExecuteProductsWarehouse executeProductsWarehouse, IDistributedCache cache, ILogger<ProductsWarehouseController> logger
+
             //, IMasterProductsWarehouse masterProductsWarehouse
             )
         {
@@ -39,13 +47,54 @@ namespace InternalShop.Controllers
             _productsWarehouse = productsWarehouse;
             this._httpContextAccessor = httpContextAccessor;
             _executeProductsWarehouse = executeProductsWarehouse;
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
         }
-        //[HttpGet]
-        //public async Task<IActionResult> GETCustomersAsync()
-        //{
-        //    var GETCustomers = await _customers.GETCustomersAsync();
-        //    return Ok(GETCustomers);
-        //}
+        [HttpGet]
+        public async Task<IActionResult> GetAllProductsWarehouse()
+        {
+
+
+
+
+
+
+            if (_cache.TryGetValue(ProductsWarehouseListCacheKey, out IEnumerable<ProductsWarehouseObjectT>? ProductsWarehouseObject))
+            {
+                _logger.Log(LogLevel.Information, "Categories list found in cache.");
+
+            }
+            else
+            {
+
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("Categorieslist", out ProductsWarehouseObject))
+                    {
+                        _logger.Log(LogLevel.Information, "Categories list found in cache.");
+                    }
+                    else
+                    {
+
+
+                        _logger.Log(LogLevel.Information, "Categories list not found in cache. Fetching from database.");
+                        ProductsWarehouseObject = _productsWarehouse.GetAllProductsWarehouse("dbo.view_CreateReportProductsWarehouse");
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(ProductsWarehouseListCacheKey, ProductsWarehouseObject, cacheEntryOptions);
+
+                    }
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
+            }
+            return Ok(ProductsWarehouseObject);
+        }
         //[HttpGet("{id}")]
         //public async Task<IActionResult> GetProductsWarehouseBYBillnoAsync(int Billno)
 
@@ -68,7 +117,7 @@ namespace InternalShop.Controllers
         //    return Ok(GetProductsWarehouseBYManageStoreID);
 
         //}
-       
+
         [HttpPost]
         public async Task<IActionResult> CreateProductsWarehouse(  [FromBody] ProductsWarehouseObjectT ProductsWarehouseModel )
         {

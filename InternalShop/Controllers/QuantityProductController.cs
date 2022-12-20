@@ -11,6 +11,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using System.Security.Cryptography.Xml;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
 
 namespace InternalShop.Controllers
 {
@@ -21,15 +23,25 @@ namespace InternalShop.Controllers
         private readonly IQuantityProduct  _quantityProduct;
         private readonly ApplicationDbContext _db;
         private int GetQTFromQuantityProduct;
-        public QuantityProductController(IQuantityProduct  quantityProduct, ApplicationDbContext db)
+        private IDistributedCache _cache;
+        private const string QuantityProductListCacheKey = "QuantityProductList";
+        private ILogger<QuantityProductController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+
+        public QuantityProductController(IQuantityProduct  quantityProduct, ApplicationDbContext db, IDistributedCache cache, ILogger<QuantityProductController> logger
+)
         {
             _db = db;
             _quantityProduct = quantityProduct;
- 
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+
+
         }
-        
-       // GET All QuantityProduct
-       [HttpGet("GetQuantityProductBYIDandmanageStoreIDAsync/{manageStoreID}/{ProdouctsID}")]
+
+        // GET All QuantityProduct
+        [HttpGet("GetQuantityProductBYIDandmanageStoreIDAsync/{manageStoreID}/{ProdouctsID}")]
         //[HttpGet]
         public IActionResult GetQuantityProductBYIDandmanageStoreIDAsync(int manageStoreID, int ProdouctsID)
         {
@@ -45,6 +57,46 @@ namespace InternalShop.Controllers
 
             return Ok(GetQTFromQuantityProduct);
         }
+        [HttpGet("GetAllquantityProducts")]
+
+        public async Task<IActionResult> GetAllquantityProducts(string SPName)
+        {
+
+            if (_cache.TryGetValue(QuantityProductListCacheKey, out IEnumerable<QuantityProductT>? QuantityProduct))
+            {
+                _logger.Log(LogLevel.Information, "QuantityProduct list found in cache.");
+
+            }
+            else
+            {
+
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("QuantityProductlist", out QuantityProduct))
+                    {
+                        _logger.Log(LogLevel.Information, "QuantityProduct list found in cache.");
+                    }
+                    else
+                    {
+
+
+                        _logger.Log(LogLevel.Information, "QuantityProduct list not found in cache. Fetching from database.");
+                        QuantityProduct = _quantityProduct.GetAllquantityProducts("dbo.view_CreateReportQuantityProduct");
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(QuantityProductListCacheKey, QuantityProduct, cacheEntryOptions);
+
+                    }
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
+            }
+            return Ok(QuantityProduct);
+        }
 
 
         [HttpGet("GetQTProdouct/{ProductId}")]
@@ -57,11 +109,11 @@ namespace InternalShop.Controllers
             GC.Collect();
             return Ok(GetQTFromQuantityProduct);
         }
-        [HttpGet("GetProdouctQT/{ProductId}/{MasterOFSToresID}")]
-        public IActionResult GetProdouctQT(int ProductId,int MasterOFSToresID)
+        [HttpGet("GetProdouctQT/{ProductId}/{ManageStoreId}")]
+        public IActionResult GetProdouctQT(int ProductId,int ManageStoreId)
         {
             var checkexistsId = true;
-            checkexistsId = _db.QuantityProducts.Any(x => x.ProdouctsID == ProductId && x.manageStoreID == MasterOFSToresID);
+            checkexistsId = _db.QuantityProducts.Any(x => x.ProdouctsID == ProductId && x.manageStoreID == ManageStoreId);
             if (checkexistsId == false) return BadRequest("Cannot Find ProdouctID Or cannot find this warehouse  to the branch");
           
            var GetQT = _db.QuantityProducts.Where(x => x.ProdouctsID == ProductId).FirstOrDefault().quantityProduct;

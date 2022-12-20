@@ -8,6 +8,8 @@ using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -21,21 +23,65 @@ namespace InternalShop.Controllers
         private readonly IManageStore _manageStore;
         private readonly IExecuteManageStore _executeManageStore;
         private IConverter _converter;
+        private IDistributedCache _cache;
+        private const string ManageStoreListCacheKey = "ManageStoreList";
+        private ILogger<ManageStoreController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
-        public ManageStoreController(ApplicationDbContext db,IManageStore manageStore, IExecuteManageStore executeManageStore,IConverter converter)
+        public ManageStoreController(ApplicationDbContext db,IManageStore manageStore, IExecuteManageStore executeManageStore,IConverter converter, IDistributedCache cache, ILogger<ManageStoreController> logger
+)
         {
             _db = db;   
              _manageStore = manageStore;
             _executeManageStore = executeManageStore;
             _converter = converter;
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
         }
         [HttpGet]
         public async Task <IActionResult> GETALLStore()
         {
-            var GetAllStore = await _manageStore.GetAllManageStoreAsync();
+            //var GetAllStore = await _manageStore.GetAllManageStoreAsync();
 
-            return Ok(GetAllStore);
+            //return Ok(GetAllStore);
+
+
+            if (_cache.TryGetValue(ManageStoreListCacheKey, out IEnumerable<ManageStoreT>? ManageStore))
+            {
+                _logger.Log(LogLevel.Information, "ManageStore list found in cache.");
+
+            }
+            else
+            {
+
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("ManageStore list", out ManageStore))
+                    {
+                        _logger.Log(LogLevel.Information, "ManageStore list found in cache.");
+                    }
+                    else
+                    {
+
+
+                        _logger.Log(LogLevel.Information, "ManageStore list not found in cache. Fetching from database.");
+                        ManageStore = _manageStore.GetAllManageStoreAsync("dbo.view_CreateReportManageStore");
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(ManageStoreListCacheKey, ManageStore, cacheEntryOptions);
+
+                    }
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
+            }
+            return Ok(ManageStore);
+
         }
         [HttpGet("{ManageStoreID}")]
         public async Task<IActionResult> GETStoreById(int ManageStoreID)

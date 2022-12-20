@@ -12,6 +12,9 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
+using InternalShop.ClassProject;
 
 namespace InternalShop.Controllers
 {
@@ -22,23 +25,68 @@ namespace InternalShop.Controllers
         private readonly ApplicationDbContext _db;
         private readonly IDismissalnotice _dismissalnotice;
         private IConverter _converter;
+        private IDistributedCache _cache;
+        private const string dismissalnoticeListCacheKey = "dismissalnoticeList";
+        private ILogger<DismissalnoticeController> _logger;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
         private readonly IExecuteDismissalnotice  _executeDismissalnotice;
 
         public DismissalnoticeController(ApplicationDbContext db,
-          IDismissalnotice dismissalnotice, IExecuteDismissalnotice executeDismissalnotice, IConverter converter)
+          IDismissalnotice dismissalnotice, IExecuteDismissalnotice executeDismissalnotice, IConverter converter, IDistributedCache cache, ILogger<DismissalnoticeController> logger
+)
         {
             _db = db;
             _dismissalnotice = dismissalnotice;
             _converter = converter;
             _executeDismissalnotice = executeDismissalnotice;
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
         }
         [HttpGet]
         public async Task<IActionResult> GetAllDismissalnoticeAsync()
         {
-         var GetAllDismissalnotice= await  _dismissalnotice.GetAllDismissalnoticeAsync();
+            //var GetAllDismissalnotice= await  _dismissalnotice.GetAllDismissalnoticeAsync();
 
-            return Ok(GetAllDismissalnotice);
+            //   return Ok(GetAllDismissalnotice);
+
+
+            if (_cache.TryGetValue(dismissalnoticeListCacheKey, out IEnumerable<DismissalnoticeT>? Dismissalnotice))
+            {
+                _logger.Log(LogLevel.Information, "dismissalnotice List found in cache.");
+
+            }
+            else
+            {
+
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("Categorieslist", out Dismissalnotice))
+                    {
+                        _logger.Log(LogLevel.Information, "dismissalnotice  list found in cache.");
+                    }
+                    else
+                    {
+
+
+                        _logger.Log(LogLevel.Information, "dismissalnotice list not found in cache. Fetching from database.");
+                        Dismissalnotice = _dismissalnotice.GetAllDismissalnoticeAsync("dbo.view_CreateReportDismissalnotice");
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        await _cache.SetAsync(dismissalnoticeListCacheKey, Dismissalnotice, cacheEntryOptions);
+
+                    }
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
+            }
+            return Ok(Dismissalnotice);
+
         }
         [HttpGet("{DismissalnoticeId}")]
         

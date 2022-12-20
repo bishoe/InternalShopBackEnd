@@ -33,6 +33,7 @@ namespace InternalShop
         public DbSet<SalesinvoiceMasterT> SalesInvoicesMaster { get; set; }
         public DbSet<SalesinvoiceT> SalesInvoices { get; set; }
 
+        public DbSet<SalesinvoiceObject> salesinvoiceObjects { get; set; }
         //public DbSet<SellProductsT> SellProducts { get; set; }
 
         public DbSet<SuppliersT> Suppliers { get; set; }
@@ -66,8 +67,7 @@ namespace InternalShop
         public DbSet<ReportDismissalnotice> reportDismissalnotices { get; set; }
         public DbSet<ReportProductsWarehouse> reportProductsWarehouses { get; set; }
         //public DbSet<BranchesReportT> branchesReportTs { get; set; }
-        public IQueryable<BranchesReportT> BranchesReportT => (IQueryable<BranchesReportT>)Set<BranchesReportT>()
-                                            .Select(t => t.BranchID);
+        public DbSet<BranchesReportT> BranchesReport { get; set; }
 
         public DbSet<ReportPermissionToEntertheStoreProduct> reportPermissionToEntertheStoreProducts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
