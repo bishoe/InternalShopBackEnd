@@ -2,10 +2,6 @@
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.ClassProject.ConvertofStoresSVC
 {
@@ -19,19 +15,19 @@ namespace InternalShop.ClassProject.ConvertofStoresSVC
         }
         public async Task<ResponseObject> CreateConvertofStoresAsync(ConvertofStoresT ViewModelconvertofStores)
         {
-            ResponseObject responseObject = new ();
+            ResponseObject responseObject = new();
             await using var dbContextTransaction = await _db.Database.BeginTransactionAsync();
             try
             {
                 var addConvertofStores = new ConvertofStoresT
                 {
-                     ManageStoreIdFrom = ViewModelconvertofStores.ManageStoreIdFrom,
-                    ManageStoreIdTo= ViewModelconvertofStores.ManageStoreIdTo,
+                    ManageStoreIdFrom = ViewModelconvertofStores.ManageStoreIdFrom,
+                    ManageStoreIdTo = ViewModelconvertofStores.ManageStoreIdTo,
                     ProdouctsID = ViewModelconvertofStores.ProdouctsID,
                     quantityProduct = ViewModelconvertofStores.quantityProduct,
                     Notes = ViewModelconvertofStores.Notes,
                     DateAdd = ViewModelconvertofStores.DateAdd,
-                    UserID = ViewModelconvertofStores.UserID= 1
+                    UserID = ViewModelconvertofStores.UserID = 1
 
                 };
                 var result = await _db.ConvertofStores.AddAsync(ViewModelconvertofStores);
@@ -79,9 +75,9 @@ namespace InternalShop.ClassProject.ConvertofStoresSVC
             var GetIdConvertofStores = (ConvertofStoresT)null;
             try
             {
-                if (ConvertofStoresId !=0)
+                if (ConvertofStoresId != 0)
                 {
-                GetIdConvertofStores = await _db.ConvertofStores.FindAsync(ConvertofStoresId);
+                    GetIdConvertofStores = await _db.ConvertofStores.FindAsync(ConvertofStoresId);
 
                 }
 
@@ -133,8 +129,8 @@ namespace InternalShop.ClassProject.ConvertofStoresSVC
 
         }
 
-     //   public async Task<object> GetQt(int ProdouctsID, int BranchCode);
-        public async Task<bool> DeleteConvertofStoresAsync(int IdConvertofStores )
+        //   public async Task<object> GetQt(int ProdouctsID, int BranchCode);
+        public async Task<bool> DeleteConvertofStoresAsync(int IdConvertofStores)
         {
             var GETIdConvertofStores = await _db.ConvertofStores.FindAsync(IdConvertofStores);
             ResponseObject responseObject = new();

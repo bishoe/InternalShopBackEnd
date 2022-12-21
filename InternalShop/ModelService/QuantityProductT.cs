@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -11,7 +7,7 @@ namespace InternalShop.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-         public int QTID { get; set; }
+        public int QTID { get; set; }
         //[Required]
         public int ProdouctsID { get; set; }
         [Required]

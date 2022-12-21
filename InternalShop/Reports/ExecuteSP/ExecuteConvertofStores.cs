@@ -1,15 +1,9 @@
 ﻿
 using InternalShop.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
-using Stimulsoft.Svg.ExCSS;
-using Microsoft.Data.SqlClient;
 
 namespace InternalShop.Reports.ExecuteSP
 {
@@ -28,13 +22,13 @@ namespace InternalShop.Reports.ExecuteSP
             return ((IEnumerable<ReportConvertofStoresT>)result);
         }
 
-   
+
 
 
         public string GetHTMLString(SqlParameter ParamValue)
         {
-             var ConvertofStoresObject
-                =
+            var ConvertofStoresObject
+               =
 ExecuteSPConvertofStores("dbo.SP_CreateReportConvertofStoresBYProdouctsID @ProdouctsID", ParamValue);
 
             var sb = new StringBuilder();
@@ -123,7 +117,7 @@ _ConvertofStoresObject.ProdouctName);
             return sb.ToString();
         }
 
-     
+
     }
 }
 

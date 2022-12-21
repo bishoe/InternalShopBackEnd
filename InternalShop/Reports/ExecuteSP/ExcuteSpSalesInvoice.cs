@@ -1,12 +1,6 @@
 ﻿using InternalShop.Models;
-using InternalShop.Reports.ReportSalesInvoice;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace InternalShop.Reports.ExecuteSP
 {
@@ -17,7 +11,7 @@ namespace InternalShop.Reports.ExecuteSP
         {
             _db = db;
         }
-        public IEnumerable<ReportSalesInvoiceById> ExecuteSPSalesInvoice(string SPName,  SqlParameter ParamValue)
+        public IEnumerable<ReportSalesInvoiceById> ExecuteSPSalesInvoice(string SPName, SqlParameter ParamValue)
         {
             //var sqlParms = new Microsoft.Data.SqlClient.SqlParameter { ParameterName = "ParamName", Value = ParamValue };
             //var result = _db.reportSalesInvoiceByIds.FromSqlRaw("'" + SPName + "'"  + "@"+ParamName , sqlParms).ToList();

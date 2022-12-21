@@ -1,12 +1,8 @@
 ﻿using InternalShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.ClassProject
 {
-   public interface IEmployee
+    public interface IEmployee
     {
 
         Task<List<EmployeesT>> GETEmployeesAsync();
@@ -15,7 +11,7 @@ namespace InternalShop.ClassProject
 
         Task<ResponseObject> CreateEmployeesAsync(EmployeesT employeeT);
 
-        Task<bool> UpdateEmployeesAsync(  int EmployeeId, EmployeesT employeeT);
+        Task<bool> UpdateEmployeesAsync(int EmployeeId, EmployeesT employeeT);
         Task<bool> DeleteEmployeesAsync(int EmployeeId);
 
     }

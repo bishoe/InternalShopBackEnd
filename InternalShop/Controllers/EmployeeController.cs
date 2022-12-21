@@ -1,12 +1,7 @@
 ﻿using InternalShop.ClassProject;
 
 using InternalShop.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Controllers
 {
@@ -16,7 +11,7 @@ namespace InternalShop.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IEmployee _employee;
-        public EmployeeController(ApplicationDbContext db , IEmployee employee)
+        public EmployeeController(ApplicationDbContext db, IEmployee employee)
         {
             _db = db;
             _employee = employee;
@@ -39,7 +34,7 @@ namespace InternalShop.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> CreateEmployeesAsync([FromBody] EmployeesT   employees)
+        public async Task<IActionResult> CreateEmployeesAsync([FromBody] EmployeesT employees)
         {
             var result = await _employee.CreateEmployeesAsync(employees);
             if (result.IsValid)
@@ -59,8 +54,8 @@ namespace InternalShop.Controllers
 
             var result = await _employee.UpdateEmployeesAsync(EmployeeId, employees);
             if (!result)
-             return BadRequest();
-             return NoContent();
+                return BadRequest();
+            return NoContent();
         }
 
 

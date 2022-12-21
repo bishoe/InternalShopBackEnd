@@ -1,22 +1,14 @@
-﻿using InternalShop;
-using InternalShop.Models;
+﻿using InternalShop.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
-using Stimulsoft.Svg.ExCSS;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace InternalShop.Reports.ExecuteSP
 {
     public class ExecuteBranches : IExecuteBranches
     {
-        private readonly ApplicationDbContext _db; 
+        private readonly ApplicationDbContext _db;
 
         public ExecuteBranches(ApplicationDbContext db)
         {
@@ -24,7 +16,7 @@ namespace InternalShop.Reports.ExecuteSP
         }
         public IEnumerable<BranchesT> ExecuteSPBranches(string SPName, [Optional] SqlParameter ParamValue)
         {
-            var result = _db.Branches.FromSqlRaw("select * from "+ SPName, ParamValue).ToList();
+            var result = _db.Branches.FromSqlRaw("select * from " + SPName, ParamValue).ToList();
             _db.Dispose();
             return (result);
         }

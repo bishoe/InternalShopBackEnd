@@ -1,11 +1,6 @@
-﻿using InternalShop;
-using InternalShop.Models;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace InternalShop.ClassProject.QuantityProductSVC
 {
@@ -29,8 +24,8 @@ namespace InternalShop.ClassProject.QuantityProductSVC
 
                 var AddQTProducts = new QuantityProductT
                 {
-                     quantityProduct=   0,
-                     ProdouctsID =  ProdouctsID
+                    quantityProduct = 0,
+                    ProdouctsID = ProdouctsID
                 };
                 var result = await _db.QuantityProducts.AddAsync(AddQTProducts);
                 await _db.SaveChangesAsync();
@@ -93,18 +88,18 @@ namespace InternalShop.ClassProject.QuantityProductSVC
 
 
         }
-        public async Task<QuantityProductT> GetQuantityProductBYIDAsync(  int ProdouctsID)
+        public async Task<QuantityProductT> GetQuantityProductBYIDAsync(int ProdouctsID)
         {
             var Result = (QuantityProductT)null;
             try
             {
                 var checkexistsId = true;
 
-                if (ProdouctsID != 0) checkexistsId =   _db.QuantityProducts.Any(x => x.ProdouctsID == ProdouctsID);
-                if(checkexistsId is true)
+                if (ProdouctsID != 0) checkexistsId = _db.QuantityProducts.Any(x => x.ProdouctsID == ProdouctsID);
+                if (checkexistsId is true)
                 {
-           Result = await _db.QuantityProducts.Where(o => o.ProdouctsID == ProdouctsID)
-             .FirstOrDefaultAsync();
+                    Result = await _db.QuantityProducts.Where(o => o.ProdouctsID == ProdouctsID)
+                      .FirstOrDefaultAsync();
 
                 }
 
@@ -135,17 +130,17 @@ namespace InternalShop.ClassProject.QuantityProductSVC
             var quantityProductresult = _db.QuantityProducts.First(x => x.ProdouctsID == ProductId);
             quantityProductresult.quantityProduct = _ObjectQuantityProduct.NewQtProduct;
 
-          //var CalcNewQTProduct = _ObjectQuantityProduct.CurrentQTProduct - _ObjectQuantityProduct.NewQtProduct;
+            //var CalcNewQTProduct = _ObjectQuantityProduct.CurrentQTProduct - _ObjectQuantityProduct.NewQtProduct;
 
- 
 
-           
+
+
             if (!ProdouctsIDExists(ProductId)) responseObject.Message = "Error objectQuantity is Empty";
-                 
+
 
             _db.Entry(quantityProductresult).State = EntityState.Modified;
 
-             try
+            try
             {
                 if (quantityProduct is null)
                 {
@@ -184,5 +179,5 @@ namespace InternalShop.ClassProject.QuantityProductSVC
             return _db.QuantityProducts.Any(e => e.ProdouctsID == ProdouctsID);
         }
     }
- 
+
 }

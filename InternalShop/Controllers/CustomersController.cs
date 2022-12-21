@@ -1,14 +1,6 @@
 ﻿using InternalShop.ClassProject.CustomersSVC;
-using InternalShop;
 using InternalShop.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 
 namespace InternalShop.Controllers
 {

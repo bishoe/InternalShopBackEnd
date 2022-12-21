@@ -1,16 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using InternalShop;
-using InternalShop.Models;
- using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using InternalShop.Reports;
+﻿using InternalShop.Models;
 using InternalShop.Reports.ReportSalesInvoice;
-using System.Collections;
+using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace InternalShop.ClassProject.SalesinvoiceSVC
 {
@@ -18,16 +9,16 @@ namespace InternalShop.ClassProject.SalesinvoiceSVC
     {
 
         private readonly ApplicationDbContext _db;
-        IReportS  _ReportSalesInvoice;
-         public SalesinvoiceSVC(ApplicationDbContext db,
-              IReportS reportSalesInvoice
-            )
+        IReportS _ReportSalesInvoice;
+        public SalesinvoiceSVC(ApplicationDbContext db,
+             IReportS reportSalesInvoice
+           )
         {
             _db = db;
             _ReportSalesInvoice = reportSalesInvoice;
         }
         public SalesinvoiceMasterT _SalesinvoiceMaster;
-      
+
 
         public async Task<ResponseObject> CreateSalesinvoiceAsync(SalesinvoiceObject salesinvoiceObject)
         {
@@ -55,7 +46,7 @@ namespace InternalShop.ClassProject.SalesinvoiceSVC
                         var AddSalesInvoicesMasterModel = new SalesinvoiceMasterT
                         {
                             CustomerID = salesinvoiceObject.CustomerID = 1,
-                            EmployeeId =salesinvoiceObject.EmployeeId=1,
+                            EmployeeId = salesinvoiceObject.EmployeeId = 1,
                             UsersID = salesinvoiceObject.UsersID = 1,
                             AMountDicount = salesinvoiceObject.AMountDicount,
                             Discount = salesinvoiceObject.Discount,
@@ -82,7 +73,7 @@ namespace InternalShop.ClassProject.SalesinvoiceSVC
                         var resultsalesinvoiceModel = await _db.SalesInvoices.AddAsync(AddsalesinvoiceModel);
                         await _db.SaveChangesAsync();
                         await dbContextTransaction.CommitAsync();
-                  //_ReportSalesInvoice.GetHTMLString(NewSalesMasterID);
+                        //_ReportSalesInvoice.GetHTMLString(NewSalesMasterID);
 
                         responseObject.IsValid = true;
                         responseObject.Message = "Added successfully";
@@ -129,15 +120,15 @@ namespace InternalShop.ClassProject.SalesinvoiceSVC
                 try
                 {
                     //var GetSalesMasterID = _db.SalesInvoicesMaster.Max(x => x.SellingMasterID);
- 
+
                     var AddSalesInvoicesMasterModel = new SalesinvoiceMasterT
                     {
-                        CustomerID  = 1,
+                        CustomerID = 1,
                         UsersID = 1,
                         AMountDicount = 1,
-                        Discount  = 1,
+                        Discount = 1,
                         TotalBDiscount = 1,
-                        TotalPrice =  1,
+                        TotalPrice = 1,
                         Tax = 1,
                         DateAdd = DateTime.Now.ToUniversalTime(),
                         SellingMasterID = 1
@@ -149,7 +140,7 @@ namespace InternalShop.ClassProject.SalesinvoiceSVC
                     await dbContextTransaction.CommitAsync();
                     //Myid =masterProductsWarehouseT.ManageStoreID;
                     //dbContextTransaction.Dispose();
-                 //   _ReportSalesInvoice.CreateReportSalesInvoice(NewSalesMasterID);
+                    //   _ReportSalesInvoice.CreateReportSalesInvoice(NewSalesMasterID);
 
                     responseObject.IsValid = true;
                     responseObject.Message = "Added successfully";
@@ -179,16 +170,16 @@ namespace InternalShop.ClassProject.SalesinvoiceSVC
             }
             #endregion
 
- 
+
 
 
 
         }
 
-        public IEnumerable<SalesinvoiceObject> GetAllsalesinvoice(string SPName)
+        public IEnumerable<SalesinvoiceObjectReport> GetAllsalesinvoice(string SPName)
         {
 
-            return _db.salesinvoiceObjects.FromSqlRaw("select * from " + SPName).ToList();
+            return _db.SalesinvoiceObjectReport.FromSqlRaw("select * from " + SPName).ToList();
 
 
         }

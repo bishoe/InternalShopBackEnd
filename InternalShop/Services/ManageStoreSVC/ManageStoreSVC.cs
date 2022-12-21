@@ -3,10 +3,6 @@ using InternalShop.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.ClassProject.MasterOFSToresSVC
 {
@@ -30,9 +26,9 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
             {
                 var AddmanageStore = new ManageStoreT
                 {
-                    ManageStoreID = manageStore.ManageStoreID,  
+                    ManageStoreID = manageStore.ManageStoreID,
                     ManageStorename = manageStore.ManageStorename,
-                     UserID = 1
+                    UserID = 1
 
                 };
                 var result = await _db.ManageStore.AddAsync(AddmanageStore);
@@ -77,7 +73,7 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
             return true;
         }
 
-        public   IEnumerable<ManageStoreT> GetAllManageStoreAsync(string SPName)
+        public IEnumerable<ManageStoreT> GetAllManageStoreAsync(string SPName)
         {
             //List<ManageStoreT> ManageStore = new();
             //try
@@ -119,7 +115,7 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
             return GetManageStoreID;
         }
 
-      
+
 
         public async Task<bool> UpdateManageStoreAsync(int ManageStoreID, ManageStoreT masterOFSTores)
         {
@@ -137,18 +133,19 @@ namespace InternalShop.ClassProject.MasterOFSToresSVC
             }
             catch (Exception ex)
             {
- 
+
                 Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
             ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
                 GC.Collect();
 
                 return false;
-            } }
-            private bool MasterOFSToresExists(int ManageStoreId)
-            {
-
-                return _db.ManageStore.Any(x => x.ManageStoreID == ManageStoreId);
             }
-       
+        }
+        private bool MasterOFSToresExists(int ManageStoreId)
+        {
+
+            return _db.ManageStore.Any(x => x.ManageStoreID == ManageStoreId);
+        }
+
     }
 }

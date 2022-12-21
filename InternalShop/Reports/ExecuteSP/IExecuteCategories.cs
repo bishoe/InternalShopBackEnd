@@ -1,11 +1,6 @@
 ﻿using InternalShop.Models;
-using System.Data.Sql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices;
 
 namespace InternalShop.Reports.ExecuteSP
 {

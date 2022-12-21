@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 namespace InternalShop.Models
 {
     public class SuppliersT
     {
-     [Key]
-     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SuppliersID { get; set; }
         [Required]
         [MaxLength(40)]
@@ -19,7 +15,7 @@ namespace InternalShop.Models
         [Required]
         [MaxLength(250)]
         public string SuplierAddress { get; set; }
-         public DateTime DateAdd { get; set; }
+        public DateTime DateAdd { get; set; }
         public DateTime DateEdit { get; set; }
 
         [MaxLength(250)]
@@ -28,7 +24,7 @@ namespace InternalShop.Models
     }
     public class SupplyRepresentativeT
     {
-       [Key]
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SuppliersID { get; set; }
         [ForeignKey("SuppliersID")]
@@ -42,7 +38,7 @@ namespace InternalShop.Models
         [Required]
         [MaxLength(250)]
         public string SupplierRAddress { get; set; }
-         public DateTime DateAdd { get; set; }
+        public DateTime DateAdd { get; set; }
         public DateTime DateEdit { get; set; }
 
         [Required]
@@ -55,4 +51,5 @@ namespace InternalShop.Models
 
 
 
-    }}
+    }
+}

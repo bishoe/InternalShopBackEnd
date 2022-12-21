@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -18,7 +14,7 @@ namespace InternalShop.Models
         [Required]
         public int Billno { get; set; }
         [Required]
-[Range(2,15)]
+        [Range(2, 15)]
         public decimal PAIDAMOUNT { get; set; }
         [Required]
         [Range(2, 15)]

@@ -1,24 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using InternalShop.ClassProject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using InternalShop.Models;
-using Serilog;
- using System.Data.SqlClient;
-using DinkToPdf;
-using System.IO;
+﻿using DinkToPdf;
 using DinkToPdf.Contracts;
+using InternalShop.ClassProject;
+using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
-using InternalShop;
-using InternalShop.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Caching.Distributed;
-using InternalShop.ClassProject.BranchesSVC;
-using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
+using System.Data.SqlClient;
 
 namespace InternalShop.Controllers
 {

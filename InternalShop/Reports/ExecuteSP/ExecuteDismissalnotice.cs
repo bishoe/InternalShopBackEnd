@@ -1,13 +1,8 @@
-﻿using InternalShop;
-using InternalShop.Models;
+﻿using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace InternalShop.Reports.ExecuteSP
 {
@@ -80,18 +75,18 @@ _DismissalnoticeObject.DateAdd);
             return sb.ToString();
         }
 
- 
 
-    public string GetHTMLStringWithoutParam()
+
+        public string GetHTMLStringWithoutParam()
         {
-           
 
-                var DismissalnoticeObject
-                    =
-    ExecuteSPDismissalnotice("dbo.view_CreateReportDismissalnotice");
 
-                var sb = new StringBuilder();
-                sb.Append(@"
+            var DismissalnoticeObject
+                =
+ExecuteSPDismissalnotice("dbo.view_CreateReportDismissalnotice");
+
+            var sb = new StringBuilder();
+            sb.Append(@"
                         <html>
                             <head>
    
@@ -111,9 +106,9 @@ _DismissalnoticeObject.DateAdd);
 
  
                                     </tr>");
-                foreach (var _DismissalnoticeObject in DismissalnoticeObject)
-                {
-                    sb.AppendFormat(@"<tr>
+            foreach (var _DismissalnoticeObject in DismissalnoticeObject)
+            {
+                sb.AppendFormat(@"<tr>
                                     <td>{0}</td>
                                     <td>{1}</td>
                                     <td>{2}</td>
@@ -121,20 +116,20 @@ _DismissalnoticeObject.DateAdd);
                                     <td>{4}</td>
                                     <td>{5}</td>
                                     </tr>",
-     _DismissalnoticeObject.DismissalnoticeId,
-     _DismissalnoticeObject.ManageStoreID,
-     _DismissalnoticeObject.ProdouctName,
-     _DismissalnoticeObject.BarCodeText,
-    _DismissalnoticeObject.quantityProduct,
-    _DismissalnoticeObject.DateAdd);
-                }
-                sb.Append(@"</table></body></html>");
-
-
-                return sb.ToString();
+ _DismissalnoticeObject.DismissalnoticeId,
+ _DismissalnoticeObject.ManageStoreID,
+ _DismissalnoticeObject.ProdouctName,
+ _DismissalnoticeObject.BarCodeText,
+_DismissalnoticeObject.quantityProduct,
+_DismissalnoticeObject.DateAdd);
             }
+            sb.Append(@"</table></body></html>");
 
-     
+
+            return sb.ToString();
+        }
+
+
     }
-    }
+}
 

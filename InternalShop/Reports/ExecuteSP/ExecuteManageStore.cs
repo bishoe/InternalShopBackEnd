@@ -2,12 +2,8 @@
 using InternalShop.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
- using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace InternalShop.Reports.ExecuteSP
 {
@@ -65,7 +61,7 @@ ExecuteSPManageStore("dbo.SP_CreateReportmanageStoreById @ManageStoreID", ParamV
                                     </tr>
 ",
  _ManageStoreObject.ManageStoreID,
- _ManageStoreObject.ManageStorename );
+ _ManageStoreObject.ManageStorename);
             }
             sb.Append(@"</table></body></html>");
 

@@ -26,7 +26,7 @@
 //            _productsSearch = IproductsSearch;
 //            _db = db;
 //        }
-   
+
 
 //        [HttpGet("{Barcode}")]
 //        public async Task <IActionResult> GetProductbyBarcode(int Barcode)

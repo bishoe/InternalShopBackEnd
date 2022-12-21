@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -12,10 +8,10 @@ namespace InternalShop.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ConvertofStoresId { get; set; }
-        
+
         [MaxLength(250)]
         public string Notes { get; set; }
-         [Required]
+        [Required]
         //public int ManageStoreId { get; set; }
         public int ManageStoreIdFrom { get; set; }
         [Required]
@@ -56,7 +52,7 @@ namespace InternalShop.Models
         public DateTime DateAdd { get; set; }
         [Required]
         //public DateTime DateEdit { get; set; }
-        public string? ManageStorename { get; set;}  
+        public string? ManageStorename { get; set; }
         //[Required]  
         //public virtual int UserID { get; set; }
     }

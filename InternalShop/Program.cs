@@ -1,14 +1,11 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using System;
-using Serilog;
-
-using Microsoft.Extensions.DependencyInjection;
-using System.IO;
-using System.Diagnostics;
 using InternalShop.CustomText;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Serilog;
+using System.Diagnostics;
 
- 
+
 namespace InternalShop
 {
     public class Program
@@ -20,7 +17,7 @@ namespace InternalShop
             using (var scope = host.Services.CreateScope())
 
             {
-                 var services = scope.ServiceProvider;
+                var services = scope.ServiceProvider;
 
                 try
                 {
@@ -30,10 +27,10 @@ namespace InternalShop
                     //var countrySvc = services.GetRequiredService<ICountrySvc>();
 
                     //DbContextInitializer.Initialize(dpContext, context  ).Wait();
-                     //   , functionSvc  
-                   // , countrySvc
+                    //   , functionSvc  
+                    // , countrySvc
 
-                  
+
 
                 }
                 catch (Exception ex)
@@ -44,23 +41,23 @@ namespace InternalShop
             }
             host.Run();
         }
-            public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
 Host.CreateDefaultBuilder(args)
 .ConfigureWebHostDefaults(webBuilder =>
 {
     webBuilder.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-.Enrich.FromLogContext()
-.Enrich.WithProperty("Application", "InternalShop")
-.Enrich.WithProperty("MachineName", Environment.MachineName)
-.Enrich.WithProperty("CurrentManagedThreadId", Environment.CurrentManagedThreadId)
-.Enrich.WithProperty("OSVersion", Environment.OSVersion)
-.Enrich.WithProperty("Version", Environment.Version)
-.Enrich.WithProperty("UserName", Environment.UserName)
-.Enrich.WithProperty("ProcessId", Process.GetCurrentProcess().Id)
-.Enrich.WithProperty("ProcessName", Process.GetCurrentProcess().ProcessName)
-.WriteTo.Console(theme: CustomConsoleTheme.VisualStudioMacLight)
-.WriteTo.File(formatter: new CustomTextFormatter(), path: Path.Combine(hostingContext.HostingEnvironment.ContentRootPath + $"{Path.DirectorySeparatorChar}Logs{Path.DirectorySeparatorChar}", $"InternalShop_{DateTime.Now:yyyyMMdd}.txt"))
-.ReadFrom.Configuration(hostingContext.Configuration));
+    .Enrich.FromLogContext()
+    .Enrich.WithProperty("Application", "InternalShop")
+    .Enrich.WithProperty("MachineName", Environment.MachineName)
+    .Enrich.WithProperty("CurrentManagedThreadId", Environment.CurrentManagedThreadId)
+    .Enrich.WithProperty("OSVersion", Environment.OSVersion)
+    .Enrich.WithProperty("Version", Environment.Version)
+    .Enrich.WithProperty("UserName", Environment.UserName)
+    .Enrich.WithProperty("ProcessId", Process.GetCurrentProcess().Id)
+    .Enrich.WithProperty("ProcessName", Process.GetCurrentProcess().ProcessName)
+    .WriteTo.Console(theme: CustomConsoleTheme.VisualStudioMacLight)
+    .WriteTo.File(formatter: new CustomTextFormatter(), path: Path.Combine(hostingContext.HostingEnvironment.ContentRootPath + $"{Path.DirectorySeparatorChar}Logs{Path.DirectorySeparatorChar}", $"InternalShop_{DateTime.Now:yyyyMMdd}.txt"))
+    .ReadFrom.Configuration(hostingContext.Configuration));
     webBuilder.UseStartup<Startup>();
 });
 

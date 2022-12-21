@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -13,7 +9,7 @@ namespace InternalShop.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OutLayID { get; set; }
         [Required]
-         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
         public string QName { get; set; }
 
 

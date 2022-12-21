@@ -1,15 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
-
-using InternalShop.Models;
-
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
-using Stimulsoft.Blockly.Model;
 
 namespace InternalShop.ClassProject
 {
@@ -27,7 +18,7 @@ namespace InternalShop.ClassProject
             //List<CategoriesT> CategoriesModel = new ();
             //try
             //{
-                
+
 
             //}
             //catch (Exception ex)
@@ -37,7 +28,7 @@ namespace InternalShop.ClassProject
             //                          ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
             //}
             GC.Collect();
-            return _db.Categories. FromSqlRaw("select * from " + SPName).ToList();
+            return _db.Categories.FromSqlRaw("select * from " + SPName).ToList();
 
 
         }
@@ -49,11 +40,11 @@ namespace InternalShop.ClassProject
             {
                 //await using var dbContextTransaction = await _db.Database.BeginTransactionAsync();
                 //categoriesViewModels = await _db.categories.Where(x => x.CategoryProductId == CategoryProductId).ToListAsync();
-                if (CategoryProductId !=0)
+                if (CategoryProductId != 0)
                 {
-categories = await _db.Categories.FindAsync(CategoryProductId);
+                    categories = await _db.Categories.FindAsync(CategoryProductId);
                 }
-                
+
 
             }
             catch (Exception ex)
@@ -78,14 +69,14 @@ categories = await _db.Categories.FindAsync(CategoryProductId);
 
             // Will hold all the errors related to registration
             //var errorList = new List<string>();
-            ResponseObject responseObject = new ();
+            ResponseObject responseObject = new();
             await using var dbContextTransaction = await _db.Database.BeginTransactionAsync();
             try
             {
                 var addCategories = new CategoriesT
                 {
                     CategoryName = categoriesViewModel.CategoryName,
-                    UsersID = categoriesViewModel.UsersID=1
+                    UsersID = categoriesViewModel.UsersID = 1
                 };
                 var result = await _db.Categories.AddAsync(categoriesViewModel);
                 await _db.SaveChangesAsync();
@@ -114,7 +105,7 @@ categories = await _db.Categories.FindAsync(CategoryProductId);
 
 
         }
-     public async Task<ResponseObject> UpdateCategoriesAsync(int CategoryProductId,CategoriesT categories  )
+        public async Task<ResponseObject> UpdateCategoriesAsync(int CategoryProductId, CategoriesT categories)
         {
             ResponseObject responseObject = new();
 
@@ -140,10 +131,10 @@ categories = await _db.Categories.FindAsync(CategoryProductId);
             }
             catch (Exception ex)
             {
-                if (!CategoryExists(CategoryProductId))  
+                if (!CategoryExists(CategoryProductId))
 
-                Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
- ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                    Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
+     ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
                 responseObject.IsValid = false;
                 responseObject.Message = "failed";
                 responseObject.Data = DateTime.Now.ToString();
@@ -163,23 +154,23 @@ categories = await _db.Categories.FindAsync(CategoryProductId);
 
         public async Task<bool> DeleteCategoriesAsync(int CategoryProductId)
         {
-              
-          var GETCategoryProductId = await _db.Categories.FindAsync(CategoryProductId);
 
-                ResponseObject responseObject = new();
+            var GETCategoryProductId = await _db.Categories.FindAsync(CategoryProductId);
 
-                if (GETCategoryProductId == null)
-                {
-                    responseObject.Message = "Error Id IS NULL";
-                    return false;
-                }
+            ResponseObject responseObject = new();
 
-                _db.Categories.Remove(GETCategoryProductId);
-                _db.SaveChanges();
+            if (GETCategoryProductId == null)
+            {
+                responseObject.Message = "Error Id IS NULL";
+                return false;
+            }
+
+            _db.Categories.Remove(GETCategoryProductId);
+            _db.SaveChanges();
             GC.Collect();
 
             return true;
-            }
         }
     }
+}
 

@@ -4,15 +4,11 @@ using DinkToPdf.Contracts;
 using InternalShop.ClassProject.BranchesSVC;
 using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
-
 using Microsoft.AspNetCore.Mvc;
- using Microsoft.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
-
- using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
 
 namespace InternalShop.Controllers
@@ -44,46 +40,46 @@ namespace InternalShop.Controllers
 
         public async Task<IActionResult> GETALLBRANCHESASYNC()
         {
-           
- 
-                if (_cache.TryGetValue(BRANCHESListCacheKey, out IEnumerable<BranchesReportT>? Branches))
-                {
-                    _logger.Log(LogLevel.Information, "Branches list found in cache.");
 
-                }
-                else
-                {
 
-                    try
+            if (_cache.TryGetValue(BRANCHESListCacheKey, out IEnumerable<BranchesReportT>? Branches))
+            {
+                _logger.Log(LogLevel.Information, "Branches list found in cache.");
+
+            }
+            else
+            {
+
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (_cache.TryGetValue("Brancheslist", out Branches))
                     {
-                        await semaphore.WaitAsync();
-                        if (_cache.TryGetValue("Brancheslist", out Branches))
-                        {
-                            _logger.Log(LogLevel.Information, "Branches list found in cache.");
-                        }
-                        else
-                        {
+                        _logger.Log(LogLevel.Information, "Branches list found in cache.");
+                    }
+                    else
+                    {
 
 
-                            _logger.Log(LogLevel.Information, "Branches list not found in cache. Fetching from database.");
+                        _logger.Log(LogLevel.Information, "Branches list not found in cache. Fetching from database.");
                         Branches = _Branches.GETALLBRANCHESASYNC("dbo.view_CreateReportBranches");
-                            var cacheEntryOptions = new DistributedCacheEntryOptions()
-                                .SetSlidingExpiration(TimeSpan.FromSeconds(60))
-                                .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
+                        var cacheEntryOptions = new DistributedCacheEntryOptions()
+                            .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                            .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
                         await _cache.SetAsync(BRANCHESListCacheKey, Branches, cacheEntryOptions);
 
                     }
                 }
-                    finally
-                    {
-                        semaphore.Release();
-                    }
+                finally
+                {
+                    semaphore.Release();
                 }
-                return Ok(Branches);
+            }
+            return Ok(Branches);
 
 
-            }       
-            
+        }
+
 
         [HttpGet("ReportBranches")]
         public IActionResult ReportBranches()
@@ -123,7 +119,7 @@ namespace InternalShop.Controllers
         [HttpGet("ReportBRANCHEBranchCode/{BranchCode}")]
         public IActionResult ReportBRANCHEBranchCode(int BranchCode)
         {
-             var sqlParms = new  SqlParameter { ParameterName = "@BranchCode", Value = BranchCode };
+            var sqlParms = new SqlParameter { ParameterName = "@BranchCode", Value = BranchCode };
 
             //return Ok(branches);
             var globalSettings = new GlobalSettings
@@ -193,7 +189,7 @@ namespace InternalShop.Controllers
 
         }
         [HttpPut("{BranchCode}")]
-        public async Task<IActionResult> UpdateBranches( int BranchCode, [FromBody]BranchesT branches)
+        public async Task<IActionResult> UpdateBranches(int BranchCode, [FromBody] BranchesT branches)
         {
 
             if (!ModelState.IsValid)
@@ -201,7 +197,7 @@ namespace InternalShop.Controllers
                 return BadRequest();
             }
 
-            var result = await _Branches.UpdateBranches( BranchCode, branches );
+            var result = await _Branches.UpdateBranches(BranchCode, branches);
 
             if (!result)
             {

@@ -29,7 +29,7 @@
 //            sb.Append(@"
 //                        <html>
 //                            <head>
-   
+
 
 //                            </ head>
 //                            <body>
@@ -38,9 +38,9 @@
 //                                    <tr>
 //                                         <th>CategoryName</th>
 //                                        <th>DateAdd</th>
- 
 
- 
+
+
 //                                    </tr>");
 //            foreach (var _CategoriesObject in CategoriesObject)
 //            {
@@ -59,7 +59,7 @@
 //            return sb.ToString();
 //        }
 
-      
+
 //    }
 //}
-  
+

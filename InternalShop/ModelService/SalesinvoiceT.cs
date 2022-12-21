@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -53,17 +49,17 @@ namespace InternalShop.Models
         [Required]
         public int Quntity_Product { get; set; }
         [Required]
-        [Range(2,15)]
+        [Range(2, 15)]
         public decimal SellingPrice { get; set; }
         //[Required]
         //public int Billno { get; set; }
         //[Required]
         //public int CategoryProductId { get; set; }
         [Required]
-         [Range(2, 15)]
+        [Range(2, 15)]
         public decimal TotalAmountRow { get; set; }
         public int UsersID { get; set; }
-      //public   SalesinvoiceMasterT SalesinvoiceMaster { get; set; }
+        //public   SalesinvoiceMasterT SalesinvoiceMaster { get; set; }
         //public List<ProductsT> Products { get; set; }
 
     }

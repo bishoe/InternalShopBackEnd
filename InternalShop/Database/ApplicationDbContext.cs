@@ -1,20 +1,18 @@
-﻿ using Microsoft.AspNetCore.Identity;
+﻿using InternalShop.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
-using System.Reflection.Emit;
- using InternalShop.Models;
 
 namespace InternalShop
 {
-    public class ApplicationDbContext : IdentityDbContext<Appuser,IdentityRole ,string>
+    public class ApplicationDbContext : IdentityDbContext<Appuser, IdentityRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
 
 
-    
+
         public DbSet<CustomersT> Customers { get; set; }
 
         public DbSet<EmployeesT> Employees { get; set; }
@@ -34,6 +32,9 @@ namespace InternalShop
         public DbSet<SalesinvoiceT> SalesInvoices { get; set; }
 
         public DbSet<SalesinvoiceObject> salesinvoiceObjects { get; set; }
+        public DbSet<SalesinvoiceObjectReport> SalesinvoiceObjectReport { get; set; }
+
+        
         //public DbSet<SellProductsT> SellProducts { get; set; }
 
         public DbSet<SuppliersT> Suppliers { get; set; }
@@ -55,12 +56,12 @@ namespace InternalShop
 
         public DbSet<PermissionToEntertheStoreProductT> PermissionToEntertheStoreProduct { get; set; }
 
-        public DbSet<ManageStoreT> ManageStore{ get; set; }
+        public DbSet<ManageStoreT> ManageStore { get; set; }
 
         public DbSet<BranchesT> Branches { get; set; }
 
         public DbSet<ProductsWarehouseObjectT> productsWarehouseObjectTs { get; set; }
- 
+
 
         public DbSet<ReportSalesInvoiceById> reportSalesInvoiceByIds { get; set; }
 

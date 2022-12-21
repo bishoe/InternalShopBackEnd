@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternalShop.Models
@@ -21,7 +17,7 @@ namespace InternalShop.Models
         [Required]
         public int Discount { get; set; }
         [Required]
-        [Range(2,15)]
+        [Range(2, 15)]
         public decimal TotalPrice { get; set; }
         [Required]
         [Range(2, 15)]
@@ -32,8 +28,8 @@ namespace InternalShop.Models
         public string Notes { get; set; }
 
         public int UsersID { get; set; }
-        public  int Tax { get; set; }
+        public int Tax { get; set; }
     }
-    
-    
+
+
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -23,7 +19,7 @@ namespace InternalShop.Models
         public string EmployeePhone { get; set; }
         [Required]
         public decimal EmployeeSalary { get; set; }
-         public DateTime DateAdd { get; set; }
+        public DateTime DateAdd { get; set; }
         public DateTime DateEdit { get; set; }
 
         [StringLength(250, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 0)]

@@ -2,10 +2,6 @@
 
 using InternalShop.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Controllers
 {
@@ -43,7 +39,7 @@ namespace InternalShop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateSuppliers([FromBody] SuppliersT  suppliers)
+        public async Task<IActionResult> CreateSuppliers([FromBody] SuppliersT suppliers)
         {
 
             // Will hold all the errors related to registration
@@ -61,7 +57,7 @@ namespace InternalShop.Controllers
 
         }
         [HttpPut("{SuppliersID}")]
-        public async Task<IActionResult> UpdateSuppliers(int SuppliersID, [FromBody] SuppliersT  suppliers)
+        public async Task<IActionResult> UpdateSuppliers(int SuppliersID, [FromBody] SuppliersT suppliers)
         {
 
             if (!ModelState.IsValid)
@@ -81,4 +77,4 @@ namespace InternalShop.Controllers
 
     }
 }
- 
+

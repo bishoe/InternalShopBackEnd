@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ModelService
+﻿namespace ModelService
 {
- public    class SiteWideSettings
+    public class SiteWideSettings
     {
         public string WebsiteName { get; set; }
         public string WebsiteTitle { get; set; }

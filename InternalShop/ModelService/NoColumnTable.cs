@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace InternalShop.Models
+﻿namespace InternalShop.Models
 {
     public class NoColumnTable
     {
         //[Required]
-         public virtual int NoColumn { get; set; }
+        public virtual int NoColumn { get; set; }
     }
 }

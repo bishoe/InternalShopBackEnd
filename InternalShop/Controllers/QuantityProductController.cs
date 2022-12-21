@@ -1,16 +1,8 @@
-﻿using InternalShop.ClassProject;
-using InternalShop.ClassProject.QuantityProductSVC;
+﻿using InternalShop.ClassProject.QuantityProductSVC;
 
 using InternalShop.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
-using System.Security.Cryptography.Xml;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 
@@ -20,7 +12,7 @@ namespace InternalShop.Controllers
     //[ApiController]
     public class QuantityProductController : ControllerBase
     {
-        private readonly IQuantityProduct  _quantityProduct;
+        private readonly IQuantityProduct _quantityProduct;
         private readonly ApplicationDbContext _db;
         private int GetQTFromQuantityProduct;
         private IDistributedCache _cache;
@@ -28,7 +20,7 @@ namespace InternalShop.Controllers
         private ILogger<QuantityProductController> _logger;
         private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
-        public QuantityProductController(IQuantityProduct  quantityProduct, ApplicationDbContext db, IDistributedCache cache, ILogger<QuantityProductController> logger
+        public QuantityProductController(IQuantityProduct quantityProduct, ApplicationDbContext db, IDistributedCache cache, ILogger<QuantityProductController> logger
 )
         {
             _db = db;
@@ -45,11 +37,11 @@ namespace InternalShop.Controllers
         //[HttpGet]
         public IActionResult GetQuantityProductBYIDandmanageStoreIDAsync(int manageStoreID, int ProdouctsID)
         {
-            if (ProdouctsID  is 0 || manageStoreID is 0 ) return NotFound();
+            if (ProdouctsID is 0 || manageStoreID is 0) return NotFound();
             var checkexistsId = true;
-            checkexistsId = _db.QuantityProducts.Any(x => x.ProdouctsID == ProdouctsID || x.manageStoreID ==manageStoreID);
+            checkexistsId = _db.QuantityProducts.Any(x => x.ProdouctsID == ProdouctsID || x.manageStoreID == manageStoreID);
             if (checkexistsId == false) return BadRequest("Cannot Find Prodouct Or Store");
-            GetQTFromQuantityProduct= _db.QuantityProducts.Where(o => o.ProdouctsID == ProdouctsID)
+            GetQTFromQuantityProduct = _db.QuantityProducts.Where(o => o.ProdouctsID == ProdouctsID)
              .Where(o => o.manageStoreID == manageStoreID)
              .FirstOrDefault().quantityProduct;
 
@@ -103,27 +95,27 @@ namespace InternalShop.Controllers
         public IActionResult GetQTProdouct(int ProductId)
         {
             var checkexistsId = true;
-            checkexistsId = _db.QuantityProducts.Any(x => x.ProdouctsID == ProductId );
+            checkexistsId = _db.QuantityProducts.Any(x => x.ProdouctsID == ProductId);
             if (checkexistsId == false) return BadRequest("Cannot Find ProdouctID");
             GetQTFromQuantityProduct = _db.QuantityProducts.Where(x => x.ProdouctsID == ProductId).FirstOrDefault().quantityProduct;
             GC.Collect();
             return Ok(GetQTFromQuantityProduct);
         }
         [HttpGet("GetProdouctQT/{ProductId}/{ManageStoreId}")]
-        public IActionResult GetProdouctQT(int ProductId,int ManageStoreId)
+        public IActionResult GetProdouctQT(int ProductId, int ManageStoreId)
         {
             var checkexistsId = true;
             checkexistsId = _db.QuantityProducts.Any(x => x.ProdouctsID == ProductId && x.manageStoreID == ManageStoreId);
             if (checkexistsId == false) return BadRequest("Cannot Find ProdouctID Or cannot find this warehouse  to the branch");
-          
-           var GetQT = _db.QuantityProducts.Where(x => x.ProdouctsID == ProductId).FirstOrDefault().quantityProduct;
-            
+
+            var GetQT = _db.QuantityProducts.Where(x => x.ProdouctsID == ProductId).FirstOrDefault().quantityProduct;
+
             GC.Collect();
 
             return Ok(GetQT);
         }
         [HttpPost]
-        public async Task<IActionResult> AddQTProduct(  int ProdouctsID)
+        public async Task<IActionResult> AddQTProduct(int ProdouctsID)
         {
             var result = await _quantityProduct.AddQtProduct(ProdouctsID);
             if (result.IsValid)
@@ -133,11 +125,11 @@ namespace InternalShop.Controllers
             return BadRequest("Cannot Save");
 
         }
-            
-        [HttpPut ("UpdateQTafterSelling/{ProductId}")]
+
+        [HttpPut("UpdateQTafterSelling/{ProductId}")]
         public async Task<IActionResult> UpdateQTafterSelling(int ProductId, [FromBody] ObjectQuantityProductT quantityProduct)
         {
-           
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();

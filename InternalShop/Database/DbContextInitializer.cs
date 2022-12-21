@@ -15,9 +15,9 @@
 //        {
 //            // Check, if db DataProtectionKeysContext is created
 //            // Check, if db ApplicationDbContext is created
-            
+
 //            //await dataProtectionKeysContext.Database.EnsureCreatedAsync();
-            
+
 //            //await applicationDbContext.Database.EnsureCreatedAsync();
 
 //            // Check, if db contains any users. If db is not empty, then db has been already seeded

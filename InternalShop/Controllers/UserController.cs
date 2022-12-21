@@ -1,24 +1,16 @@
-﻿using InternalShop;
+﻿using Enum;
 using InternalShop.BindingModel;
-using Microsoft.AspNetCore.Http;
+using InternalShop.BindingModel.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Collections.Generic;
-using InternalShop.BindingModel.DTO;
-using Microsoft.AspNetCore.Authorization;
-using ModelService;
-using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using ModelService;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Enum;
+using System.Text;
 
 namespace InternalShop.Controllers
 {
@@ -51,9 +43,9 @@ namespace InternalShop.Controllers
             return View();
         }
 
- 
 
-         [HttpPost("RegisterUser")]
+
+        [HttpPost("RegisterUser")]
         public async Task<object> RegisterUser([FromBody] AddUpdateRegisterUserBindingModel model)
         {
             try
@@ -91,7 +83,7 @@ namespace InternalShop.Controllers
             }
             catch (Exception ex)
             {
-                return await Task.FromResult( ex.Message);
+                return await Task.FromResult(ex.Message);
             }
         }
         [Authorize]
@@ -147,7 +139,7 @@ namespace InternalShop.Controllers
             }
             catch (Exception ex)
             {
-                return await Task.FromResult( ex.Message);
+                return await Task.FromResult(ex.Message);
             }
         }
 
@@ -248,6 +240,6 @@ namespace InternalShop.Controllers
                 return await Task.FromResult(new ResponseModel(ResponseCode.Error, ex.Message, null));
             }
         }
- 
+
     }
 }

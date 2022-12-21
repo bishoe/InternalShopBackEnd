@@ -1,20 +1,12 @@
 ﻿using DinkToPdf;
 using DinkToPdf.Contracts;
 using InternalShop.ClassProject.DismissalnoticeSVC;
-using InternalShop;
 using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
-using InternalShop.ClassProject;
+using System.Data.SqlClient;
 
 namespace InternalShop.Controllers
 {
@@ -30,7 +22,7 @@ namespace InternalShop.Controllers
         private ILogger<DismissalnoticeController> _logger;
         private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
-        private readonly IExecuteDismissalnotice  _executeDismissalnotice;
+        private readonly IExecuteDismissalnotice _executeDismissalnotice;
 
         public DismissalnoticeController(ApplicationDbContext db,
           IDismissalnotice dismissalnotice, IExecuteDismissalnotice executeDismissalnotice, IConverter converter, IDistributedCache cache, ILogger<DismissalnoticeController> logger
@@ -89,7 +81,7 @@ namespace InternalShop.Controllers
 
         }
         [HttpGet("{DismissalnoticeId}")]
-        
+
         public async Task<IActionResult> GetDismissalnoticeByidAsync(int DismissalnoticeId)
         {
             var GetDismissalnoticeId = await _dismissalnotice.GetDismissalnoticeByidAsync(DismissalnoticeId);
@@ -98,14 +90,14 @@ namespace InternalShop.Controllers
             return Ok(GetDismissalnoticeId);
         }
 
-        
-        
+
+
         [HttpPost]
         public async Task<IActionResult> CreateDismissalnoticeAsync([FromBody] DismissalnoticeT dismissalnotice)
         {
             var result = await _dismissalnotice.CreateDismissalnoticeAsync(dismissalnotice);
             if (result.IsValid) return Ok(new { Message = "Success" });
-            
+
             return BadRequest("Cannot Save");
 
 
@@ -126,17 +118,17 @@ namespace InternalShop.Controllers
         [HttpDelete("{DismissalnoticeId}")]
         public async Task<IActionResult> DeleteDismissalnoticeAsync(int DismissalnoticeId)
         {
-    if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest();
             var GETDismissalnoticeId = await _dismissalnotice.DeleteDismissalnoticeAsync(DismissalnoticeId);
             if (!GETDismissalnoticeId) return BadRequest();
             return Ok();
         }
         [HttpGet("ReportDismissalnotice")]
-       
+
         public IActionResult ReportDismissalnotice()
         {
 
-             var globalSettings = new GlobalSettings
+            var globalSettings = new GlobalSettings
             {
                 ColorMode = ColorMode.Color,
                 Orientation = Orientation.Portrait,
@@ -170,7 +162,7 @@ namespace InternalShop.Controllers
         [HttpGet("ReportDismissalnoticeById/{DismissalnoticeId}")]
         public IActionResult ReportDismissalnoticeById(int DismissalnoticeId)
         {
-            var sqlParms = new   SqlParameter { ParameterName = "@DismissalnoticeId", Value = DismissalnoticeId };
+            var sqlParms = new SqlParameter { ParameterName = "@DismissalnoticeId", Value = DismissalnoticeId };
 
             //return Ok(branches);
             var globalSettings = new GlobalSettings

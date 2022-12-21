@@ -1,16 +1,9 @@
 ﻿
 using InternalShop.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
-using Stimulsoft.Svg.ExCSS;
-using Microsoft.Data.SqlClient;
-using DinkToPdf.Contracts;
 
 namespace InternalShop.Reports.ExecuteSP
 {
@@ -21,7 +14,7 @@ namespace InternalShop.Reports.ExecuteSP
 
         public ExecutePermissionToEntertheStoreProductReport(ApplicationDbContext db)
         {
-            _db = db; 
+            _db = db;
         }
         public IEnumerable<ReportPermissionToEntertheStoreProduct> ExecuteSPPermissionToEntertheStoreProduct(string SPName, [Optional] SqlParameter ParamValue)
         {
@@ -32,7 +25,7 @@ namespace InternalShop.Reports.ExecuteSP
 
         public string GetHTMLString(SqlParameter ParamValue)
         {
- 
+
             var PermissionToEntertheStoreProductObject
                 =
 ExecuteSPPermissionToEntertheStoreProduct("dbo.SP_PermissionToEntertheStoreProductById @PermissionToEntertheStoreProductId", ParamValue);

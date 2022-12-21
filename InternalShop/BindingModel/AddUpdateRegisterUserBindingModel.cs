@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace InternalShop.BindingModel
+﻿namespace InternalShop.BindingModel
 {
     public class AddUpdateRegisterUserBindingModel
     {

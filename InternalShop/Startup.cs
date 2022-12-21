@@ -15,9 +15,7 @@ using InternalShop.ClassProject.QuantityProductSVC;
 using InternalShop.ClassProject.SalesinvoiceSVC;
 //using InternalShop.ClassProject.Searchproducts;
 using InternalShop.ClassProject.SuppliersSVC;
-using InternalShop.Controllers;
 using InternalShop.GETErr;
-using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
 //using InternalShop.Reports.ReportBranches;
 //using InternalShop.Reports.ReportCategories;
@@ -37,7 +35,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ModelService;
-using System;
 using System.Text;
 
 namespace InternalShop
@@ -64,8 +61,8 @@ namespace InternalShop
             services.AddIdentity<Appuser, IdentityRole>(opt => { }).AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-       //     services.AddDbContext<DataProtectionKeysContext>(options =>
-       //options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContextCon"), x => x.MigrationsAssembly("InternalShop")));
+            //     services.AddDbContext<DataProtectionKeysContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContextCon"), x => x.MigrationsAssembly("InternalShop")));
             #endregion
 
             #region Services
@@ -95,7 +92,7 @@ namespace InternalShop
             services.AddTransient<IExecuteProducts, ExecuteProducts>();
             services.AddTransient<IExecuteProductsWarehouse, ExecuteProductsWarehouse>();
             services.AddTransient<IExecuteBranches, ExecuteBranches>();
-           
+
             services.AddTransient<IReportExecutePermissionToEntertheStoreProduct, ExecutePermissionToEntertheStoreProductReport>();
 
             //services.AddTransient<IGetAllPermissionToEntertheStoreProduct, ExecuteGetAllPermissionToEntertheStoreProduct>();

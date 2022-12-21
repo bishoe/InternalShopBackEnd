@@ -1,16 +1,11 @@
-﻿using InternalShop.ClassProject.ConvertofStoresSVC;
-using InternalShop.ClassProject;
- using InternalShop.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Serilog;
- 
-using DinkToPdf;
-using System.IO;
-using Microsoft.Data.SqlClient;
+﻿using DinkToPdf;
 using DinkToPdf.Contracts;
+using InternalShop.ClassProject.ConvertofStoresSVC;
+using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
-using InternalShop.ClassProject.PermissionToEntertheStoreProductSVC;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Serilog;
 
 namespace InternalShop.Controllers
 {
@@ -26,8 +21,8 @@ namespace InternalShop.Controllers
 
 
         public ConvertofStoresController(ApplicationDbContext db, IConvertofStores convertofStores,
-            
-            IExecuteConvertofStores executeConvertofStores,IConverter converter
+
+            IExecuteConvertofStores executeConvertofStores, IConverter converter
             )
         {
             _db = db;
@@ -40,10 +35,10 @@ namespace InternalShop.Controllers
         public IActionResult GetAllConvertofStoresAsync()
         {
 
-      
+
 
             try
-            {           
+            {
                 var ExecuteSPObject = _convertofStores.GetAllConvertofStoresAsync("dbo.View_GetAllConvertOfStores");
 
                 if (ExecuteSPObject == null)
@@ -74,11 +69,11 @@ namespace InternalShop.Controllers
             {
                 return BadRequest();
             }
-           
-                if (IdConvertofStores == 0) return BadRequest();               
-              GetConvertofStores = await _convertofStores.GetConvertofStoresByidAsync(IdConvertofStores);
 
-           return Ok(GetConvertofStores);
+            if (IdConvertofStores == 0) return BadRequest();
+            GetConvertofStores = await _convertofStores.GetConvertofStoresByidAsync(IdConvertofStores);
+
+            return Ok(GetConvertofStores);
         }
 
 
@@ -106,19 +101,19 @@ namespace InternalShop.Controllers
         [HttpPut("{IdConvertofStores}")]
         public async Task<IActionResult> UpdateConvertofStoresAsync(int IdConvertofStores, [FromBody] ConvertofStoresT convertofStores)
         {
-            
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
- var result = await _convertofStores.UpdateConvertofStoresAsync(IdConvertofStores, convertofStores);
-                if (!result)
-                {
-                    return BadRequest();
 
-                }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var result = await _convertofStores.UpdateConvertofStoresAsync(IdConvertofStores, convertofStores);
+            if (!result)
+            {
+                return BadRequest();
 
-            
+            }
+
+
             return Ok();
 
         }
@@ -127,21 +122,21 @@ namespace InternalShop.Controllers
         [HttpDelete("{IdConvertofStores}")]
         public async Task<IActionResult> DeleteConvertofStoresAsync(int ConvertofStoresId)
         {
-            
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
-                var GetConvertofStoresId = await _convertofStores.DeleteConvertofStoresAsync(ConvertofStoresId);
-                if (!GetConvertofStoresId)
-                {
-                    return BadRequest();
 
-                }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var GetConvertofStoresId = await _convertofStores.DeleteConvertofStoresAsync(ConvertofStoresId);
+            if (!GetConvertofStoresId)
+            {
+                return BadRequest();
 
-           
+            }
 
-            
+
+
+
             return Ok();
         }
         [HttpGet("ReportConvertofStore/{ProdouctsID}")]
@@ -184,4 +179,4 @@ namespace InternalShop.Controllers
 
     }
 }
- 
+

@@ -41,5 +41,5 @@ namespace InternalShop
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             };
         }
-    }    
+    }
 }

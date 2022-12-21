@@ -1,13 +1,9 @@
 ﻿
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace InternalShop.Reports.ExecuteSP
 {
@@ -180,7 +176,7 @@ ExecuteSPProductsWarehouse("dbo.view_CreateReportProductsWarehouse");
  _ProductsWarehousebject.ProdouctName,
 _ProductsWarehousebject.PurchasingPrice,
 _ProductsWarehousebject.SellingPrice
-, _ProductsWarehousebject. Productiondate
+, _ProductsWarehousebject.Productiondate
 , _ProductsWarehousebject.ExpireDate
 , _ProductsWarehousebject.SizeProducts
 , _ProductsWarehousebject.TotalAmountRow

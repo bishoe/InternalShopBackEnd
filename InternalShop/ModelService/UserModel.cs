@@ -1,5 +1,4 @@
-﻿using System;
-namespace ModelService
+﻿namespace ModelService
 {
     public class UserModel
     {

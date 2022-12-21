@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -22,7 +18,7 @@ namespace InternalShop.Models
 
         public int UserID { get; set; }
 
-        public   ICollection<PermissionToEntertheStoreProductT>? PermissionToEntertheStoreProduct { get; set; }
+        public ICollection<PermissionToEntertheStoreProductT>? PermissionToEntertheStoreProduct { get; set; }
 
-     }
+    }
 }

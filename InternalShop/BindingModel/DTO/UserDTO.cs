@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System;
-
-namespace InternalShop.BindingModel.DTO
+﻿namespace InternalShop.BindingModel.DTO
 {
     public class UserDTO
     {

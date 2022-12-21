@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -27,11 +23,11 @@ namespace InternalShop.Models
         [Required]
         [Range(2, 15)]
         public decimal AMountDicount { get; set; }
-        
+
         public string Notes { get; set; }
 
         public int UsersID { get; set; }
-        
+
         public int StoreId { get; set; }
         [Required]
         public int SuppliersID { get; set; }
@@ -41,7 +37,7 @@ namespace InternalShop.Models
         public int Billno { get; set; }
         [Required]
         public int PermissionToEntertheStoreProductId { get; set; }
-         //public int BranchCode { get; set; }
+        //public int BranchCode { get; set; }
         [Required]
         public int CategoryProductId { get; set; }
         [Required]

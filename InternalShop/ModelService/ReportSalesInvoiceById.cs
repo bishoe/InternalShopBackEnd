@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace InternalShop.Models
 {
     public class ReportSalesInvoiceById
-    {       
+    {
 
         [Key]
         public int SellingMasterID { get; set; }
@@ -27,10 +22,10 @@ namespace InternalShop.Models
         public decimal TotalBDiscount { get; set; }
 
         public decimal TotalPrice { get; set; }
-         public int EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
         public decimal AmountPaid { get; set; }
- 
+
         public decimal RemainingAmount { get; set; }
 
 

@@ -1,15 +1,7 @@
-﻿
-using InternalShop;
+﻿using InternalShop.ClassProject.QuantityProductSVC;
 using InternalShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
- using Serilog;
-using InternalShop.ClassProject.QuantityProductSVC;
-using System.Collections;
+using Serilog;
 
 namespace InternalShop.ClassProject.ProductsSVC
 {
@@ -21,13 +13,13 @@ namespace InternalShop.ClassProject.ProductsSVC
         public ProductsSVC(ApplicationDbContext db, IQuantityProduct quantityProduct)
         {
             _db = db;
-            _quantityProduct = quantityProduct; 
+            _quantityProduct = quantityProduct;
         }
 
 
         public async Task<ResponseObject> CreateProductsAsync(ProductsT products)
         {
-            ResponseObject responseObject = new  ();
+            ResponseObject responseObject = new();
 
             await using var dbContextTransaction = await _db.Database.BeginTransactionAsync();
 
@@ -43,8 +35,8 @@ namespace InternalShop.ClassProject.ProductsSVC
                 };
                 var result = await _db.Products.AddAsync(AddProducts);
                 await _db.SaveChangesAsync();
-                await dbContextTransaction.CommitAsync();     
-                var CurrentidafterinsertNewRow =      AddProducts.ProdouctsID;
+                await dbContextTransaction.CommitAsync();
+                var CurrentidafterinsertNewRow = AddProducts.ProdouctsID;
 
                 //TODO GET Method insert new row in quntity product
                 var resultQT = await _quantityProduct.AddQtProduct(AddProducts.ProdouctsID);
@@ -113,12 +105,12 @@ namespace InternalShop.ClassProject.ProductsSVC
             GC.Collect();
 
             return Result;
-            }
+        }
 
 
 
 
-        public   IEnumerable<ProductsT> GetProductsAsync(string SPName)
+        public IEnumerable<ProductsT> GetProductsAsync(string SPName)
         {
 
             //List<ProductsT> _productsModel = new List<ProductsT>();

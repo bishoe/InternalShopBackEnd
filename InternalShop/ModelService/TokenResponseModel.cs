@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
 
 namespace ModelService
 {
@@ -18,7 +13,7 @@ namespace ModelService
         public string UserId { get; set; } // user id
         public bool TwoFactorLoginOn { get; set; } // if two factor validation is on
         public ClaimsPrincipal Principal { get; set; }
-    
+
         public ResponseStatusInfoModel ResponseInfo { get; set; } // user name
     }
 }

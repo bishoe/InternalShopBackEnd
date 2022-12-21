@@ -1,18 +1,11 @@
-﻿using Microsoft.CodeAnalysis;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
-using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
     public class PermissionToEntertheStoreProductT
     {
-        
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PermissionToEntertheStoreProductId { get; set; }
@@ -31,7 +24,7 @@ namespace InternalShop.Models
         public ManageStoreT? ManageStore { get; set; }
 
     }
-     public  class  ReportPermissionToEntertheStoreProduct
+    public class ReportPermissionToEntertheStoreProduct
     {
         [Key]
         public int PermissionToEntertheStoreProductId { get; set; }
@@ -43,10 +36,10 @@ namespace InternalShop.Models
         public int quantityProduct { get; set; }
         [Required]
         public DateTime DateAdd { get; set; }
-         [Required]
+        [Required]
         public virtual string? ProdouctName { get; set; }
         //[OptionalField]
         //public int   UserID { get; set; }
-        public virtual string? ManageStorename { get; set; } 
+        public virtual string? ManageStorename { get; set; }
     }
 }

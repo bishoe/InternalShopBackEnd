@@ -1,21 +1,13 @@
-﻿using InternalShop.ClassProject.MasterProductsWarehouseSVC.ProductsWarehouseSVC;
-using InternalShop.ClassProject.MasterProductsWarehouseSVC;
-
+﻿using DinkToPdf;
+using DinkToPdf.Contracts;
+using InternalShop.ClassProject.MasterProductsWarehouseSVC.ProductsWarehouseSVC;
 using InternalShop.Models;
+using InternalShop.Reports.ExecuteSP;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DinkToPdf;
-using System.IO;
-using System.Data.SqlClient;
-using DinkToPdf.Contracts;
-using InternalShop.Reports.ExecuteSP;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
-using InternalShop.ClassProject;
+using System.Data.SqlClient;
 
 namespace InternalShop.Controllers
 {
@@ -119,12 +111,12 @@ namespace InternalShop.Controllers
         //}
 
         [HttpPost]
-        public async Task<IActionResult> CreateProductsWarehouse(  [FromBody] ProductsWarehouseObjectT ProductsWarehouseModel )
+        public async Task<IActionResult> CreateProductsWarehouse([FromBody] ProductsWarehouseObjectT ProductsWarehouseModel)
         {
             object GetNoColumn = ProductsWarehouseModel.Nocolumn;
 
             //Delete the cookie object  
-            MasterProductsWarehouseT masterProductsWarehouse =new();
+            MasterProductsWarehouseT masterProductsWarehouse = new();
             //ProductsWarehouseObjectT productsWarehouseObjectT = new();
             ProductsWarehouseT productsWarehouseT = new();
             //int NoColumn;
@@ -135,7 +127,7 @@ namespace InternalShop.Controllers
 
             if (AddProductsWarehouseModelresult.IsValid)
             {
-           return Ok(new { Message = "Added successfully", masterProductsWarehouse.ManageStoreID }) ;
+                return Ok(new { Message = "Added successfully", masterProductsWarehouse.ManageStoreID });
                 //return Ok(new { Message = "Success" });
 
             }
@@ -145,11 +137,11 @@ namespace InternalShop.Controllers
 
 
         [HttpGet("GetSellingPrice/{ProdouctsID}")]
-        public IActionResult GetSellingPrice( int ProdouctsID)
+        public IActionResult GetSellingPrice(int ProdouctsID)
         {
             var checkexistsId = true;
 
-            checkexistsId=   _db.ProductsWarehouse.Any(x => x.ProdouctsID == ProdouctsID);
+            checkexistsId = _db.ProductsWarehouse.Any(x => x.ProdouctsID == ProdouctsID);
             if (checkexistsId is false) return BadRequest("Cannot Find Prodouct");
 
             var GetSellingPrice = _db.ProductsWarehouse.Where(x => x.ProdouctsID == ProdouctsID).FirstOrDefault().SellingPrice;
@@ -165,7 +157,7 @@ namespace InternalShop.Controllers
 
 
         }
-         
+
         public IActionResult ReportAllProductsWarehouse()
         {
 
@@ -241,4 +233,4 @@ namespace InternalShop.Controllers
     }
 
 }
- 
+

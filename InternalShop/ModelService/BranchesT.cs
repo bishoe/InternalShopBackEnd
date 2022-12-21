@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
- using System.Threading.Tasks;
 
 namespace InternalShop.Models
 {
@@ -32,8 +27,8 @@ namespace InternalShop.Models
         [Required]
         [MaxLength(11)]
         public string BranchMobile { get; set; }
-         public DateTime DateAdd { get; set; }
-        public DateTime DateEdit  { get; set; }
+        public DateTime DateAdd { get; set; }
+        public DateTime DateEdit { get; set; }
         public int USerID { get; set; }
     }
 
@@ -47,7 +42,7 @@ namespace InternalShop.Models
         public int BranchID { get; set; }
         [Required]
         //[MaxLength(8)]
- 
+
         public int BranchCode { get; set; }
         [Required]
         [MaxLength(50)]

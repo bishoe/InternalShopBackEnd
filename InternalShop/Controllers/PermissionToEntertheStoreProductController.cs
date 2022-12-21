@@ -1,21 +1,12 @@
-﻿using InternalShop.ClassProject.PermissionToEntertheStoreProductSVC;
-
-using InternalShop.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DinkToPdf;
 using DinkToPdf.Contracts;
+using InternalShop.ClassProject.PermissionToEntertheStoreProductSVC;
+using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
-using DinkToPdf;
-using System.IO;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
-using InternalShop.ClassProject;
 
 namespace InternalShop.Controllers
 {
@@ -23,7 +14,7 @@ namespace InternalShop.Controllers
     //[ApiController]
     public class PermissionToEntertheStoreProductController : ControllerBase
     {
-          private IConverter _converter;
+        private IConverter _converter;
         private readonly ApplicationDbContext _db;
 
         private readonly IPermissionToEntertheStoreProduct _IPermissionToEntertheStoreProduct;
@@ -46,14 +37,14 @@ namespace InternalShop.Controllers
             IPermissionToEntertheStoreProduct IPermissionToEntertheStoreProduct,
 
       //IGetAllPermissionToEntertheStoreProduct getAllPermissionToEntertheStoreProduct ,
-    
-      IReportExecutePermissionToEntertheStoreProduct  reportExecutePermissionToEntertheStoreProduct, IDistributedCache cache, ILogger<PermissionToEntertheStoreProductController> logger
+
+      IReportExecutePermissionToEntertheStoreProduct reportExecutePermissionToEntertheStoreProduct, IDistributedCache cache, ILogger<PermissionToEntertheStoreProductController> logger
 
 
 
             )
         {
-              _converter = converter; 
+            _converter = converter;
             _db = db;
             _IPermissionToEntertheStoreProduct = IPermissionToEntertheStoreProduct;
             //_getAllPermissionToEntertheStoreProduct = getAllPermissionToEntertheStoreProduct;
@@ -63,7 +54,7 @@ namespace InternalShop.Controllers
 
         }
         [HttpGet]
-        public async Task <IActionResult> GetAllPermissionToEntertheStoreProduct()
+        public async Task<IActionResult> GetAllPermissionToEntertheStoreProduct()
         {
             //try
             //{
@@ -117,7 +108,7 @@ namespace InternalShop.Controllers
 
 
         [HttpGet("{PermissionToEntertheStoreProductId}")]
-   public async Task<IActionResult> GetPermissionToEntertheStoreProductByidAsync(int PermissionToEntertheStoreProductId)
+        public async Task<IActionResult> GetPermissionToEntertheStoreProductByidAsync(int PermissionToEntertheStoreProductId)
         {
             if (PermissionToEntertheStoreProductId == 0) return NotFound();
 
@@ -127,17 +118,17 @@ namespace InternalShop.Controllers
 
 
         }
-    
-    
-    [HttpPost]
-    public async Task<IActionResult> CreatePermissionToEntertheStoreProductAsync([FromBody] PermissionToEntertheStoreProductT PermissionToEntertheStoreProduct)
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePermissionToEntertheStoreProductAsync([FromBody] PermissionToEntertheStoreProductT PermissionToEntertheStoreProduct)
         {
 
             var AddPermissionToEntertheStoreProduct = await _IPermissionToEntertheStoreProduct.CreatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProduct);
 
             if (AddPermissionToEntertheStoreProduct.IsValid)
             {
-              return Ok(new {   AddPermissionToEntertheStoreProduct.Message});
+                return Ok(new { AddPermissionToEntertheStoreProduct.Message });
                 //return Ok(new { Message = "Success" });
 
             }
@@ -153,7 +144,7 @@ namespace InternalShop.Controllers
                 return BadRequest();
             }
 
-            var result = await _IPermissionToEntertheStoreProduct.UpdatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductId,PermissionToEntertheStoreProduct);
+            var result = await _IPermissionToEntertheStoreProduct.UpdatePermissionToEntertheStoreProductAsync(PermissionToEntertheStoreProductId, PermissionToEntertheStoreProduct);
 
             if (!result)
             {

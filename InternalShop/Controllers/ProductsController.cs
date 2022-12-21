@@ -1,21 +1,13 @@
 ﻿using DinkToPdf;
 using DinkToPdf.Contracts;
 using InternalShop.ClassProject;
-
 using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using InternalShop.ClassProject.QuantityProductSVC;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using System.Data.SqlClient;
 
 namespace InternalShop.Controllers
 {
@@ -26,7 +18,7 @@ namespace InternalShop.Controllers
         private readonly ApplicationDbContext _db;
         private readonly IProducts _products;
         private IConverter _converter;
-        private readonly IExecuteProducts  _executeProducts;
+        private readonly IExecuteProducts _executeProducts;
         private IDistributedCache _cache;
         private const string ProductsListCacheKey = "ProductsList";
         private ILogger<ProductsController> _logger;
@@ -95,23 +87,23 @@ namespace InternalShop.Controllers
 
         }
 
-      
+
         [HttpGet("{ProdouctsID}")]
-         public async Task<IActionResult> GetProductsById( int ProdouctsID)
+        public async Task<IActionResult> GetProductsById(int ProdouctsID)
         {
-            if ( ProdouctsID == 0)
+            if (ProdouctsID == 0)
             {
                 return NotFound();
             }
-            var GETPoductsBYId = await _products.GetProductsByIdAsync( ProdouctsID);
+            var GETPoductsBYId = await _products.GetProductsByIdAsync(ProdouctsID);
 
             return Ok(GETPoductsBYId);
         }
-         
+
         [HttpGet("GetProductbyBarcode/{Barcode}")]
         public async Task<IActionResult> GetProductbyBarcode(int Barcode)
         {
-            var GetProductbyName =  await   _products.GetProductbyBarcode(Barcode);
+            var GetProductbyName = await _products.GetProductbyBarcode(Barcode);
             return Ok(GetProductbyName);
         }
 
@@ -120,7 +112,7 @@ namespace InternalShop.Controllers
         {
 
             var result = await _products.CreateProductsAsync(productsT);
-           var my= productsT.ProdouctsID;
+            var my = productsT.ProdouctsID;
             if (result.IsValid)
             {
                 return Ok(new { Message = "Added successfully" });
@@ -138,7 +130,7 @@ namespace InternalShop.Controllers
             }
             try
             {
-                var result = await _products.UpdateProductsAsync(ProdouctsID,   productsT);
+                var result = await _products.UpdateProductsAsync(ProdouctsID, productsT);
                 if (!result)
                 {
                     return BadRequest();
@@ -253,10 +245,10 @@ namespace InternalShop.Controllers
             };
             _converter.Convert(pdf);
 
-             return Ok("Successfully created PDF document.");
+            return Ok("Successfully created PDF document.");
 
         }
 
     }
 }
- 
+

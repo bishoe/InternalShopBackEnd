@@ -1,28 +1,20 @@
-﻿using InternalShop;
-using InternalShop.Models;
-using InternalShop.Reports.ExecuteSP;
+﻿using InternalShop.Reports.ExecuteSP;
 using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace InternalShop.Reports.ReportSalesInvoice
 {
     public class ReportSalesInvoiceSVC : IReportS
     {
-         private readonly IExecuteSPSalesInvoice _executeSp;
+        private readonly IExecuteSPSalesInvoice _executeSp;
 
         public ReportSalesInvoiceSVC(IExecuteSPSalesInvoice executeSp)
         {
-             _executeSp = executeSp;
-         }
+            _executeSp = executeSp;
+        }
 
-     
- 
+
+
 
         /// <summary>
         /// Genrate Report From Screen Salesinvoice 
@@ -32,7 +24,7 @@ namespace InternalShop.Reports.ReportSalesInvoice
         /// </summary>
         /// <param name="SellingMasterID"></param>
         /// <returns></returns>
- 
+
 
 
         /// <summary>
@@ -42,7 +34,7 @@ namespace InternalShop.Reports.ReportSalesInvoice
         /// <returns></returns>
         public string GetHTMLString(int ParamValue)
         {
-            var sqlParms = new  SqlParameter { ParameterName = "@SellingMasterID", Value = ParamValue };
+            var sqlParms = new SqlParameter { ParameterName = "@SellingMasterID", Value = ParamValue };
             var SalesInvoiceObject = _executeSp.ExecuteSPSalesInvoice("dbo.SP_CreateReportSalesInvoiceById @SellingMasterID", sqlParms);
             var sb = new StringBuilder();
             sb.Append(@"

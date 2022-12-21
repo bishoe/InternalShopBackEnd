@@ -1,11 +1,6 @@
-﻿using InternalShop;
-using InternalShop.Models;
+﻿using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
 {
@@ -40,7 +35,7 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
                 var GetCurrentId = AddPermissionToEntertheStoreProduct.PermissionToEntertheStoreProductId;
 
                 responseObject.IsValid = true;
-                responseObject.Message =  ">"+ GetCurrentId;
+                responseObject.Message = ">" + GetCurrentId;
                 responseObject.Data = DateTime.Now.ToString();
             }
             catch (Exception ex)
@@ -79,7 +74,7 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
         {
 
             return _db.reportPermissionToEntertheStoreProducts.FromSqlRaw("select * from " + SPName).ToList();
-            
+
 
 
 
@@ -156,7 +151,7 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
             }
             catch (Exception ex)
             {
- 
+
                 Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
             ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
 
@@ -166,7 +161,7 @@ namespace InternalShop.ClassProject.PermissionToEntertheStoreProductSVC
                 return false;
             }
         }
-        private bool  PermissionToEntertheStoreProductExists(int IdPermissionToEntertheStoreProduct)
+        private bool PermissionToEntertheStoreProductExists(int IdPermissionToEntertheStoreProduct)
         {
 
             return _db.PermissionToEntertheStoreProduct.Any(x => x.PermissionToEntertheStoreProductId == IdPermissionToEntertheStoreProduct);

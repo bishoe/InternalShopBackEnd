@@ -1,11 +1,6 @@
-﻿using InternalShop;
-using InternalShop.Models;
+﻿using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.ClassProject.SuppliersSVC
 {
@@ -27,10 +22,10 @@ namespace InternalShop.ClassProject.SuppliersSVC
                 var addSuppliers = new SuppliersT
                 {
 
-SuplierName= suppliersModel.SuplierName,
-SuplierAddress=suppliersModel.SuplierAddress,
-SuplierPhone = suppliersModel.SuplierPhone,
-Notes =suppliersModel.Notes,
+                    SuplierName = suppliersModel.SuplierName,
+                    SuplierAddress = suppliersModel.SuplierAddress,
+                    SuplierPhone = suppliersModel.SuplierPhone,
+                    Notes = suppliersModel.Notes,
                     UsersID = suppliersModel.UsersID = 1
                 };
                 var result = await _db.Suppliers.AddAsync(suppliersModel);
@@ -64,7 +59,7 @@ Notes =suppliersModel.Notes,
 
         public async Task<List<SuppliersT>> GETALLSuppliersASYNC()
         {
-            List <SuppliersT> _SuppliersModel = new();
+            List<SuppliersT> _SuppliersModel = new();
             try
             {
                 _SuppliersModel = await _db.Suppliers.OrderBy(x => x.SuplierName).ToListAsync();

@@ -1,8 +1,6 @@
 ﻿
 using DinkToPdf;
 using DinkToPdf.Contracts;
-using InternalShop.ClassProject;
-using InternalShop.ClassProject.EmployeeSVC;
 using InternalShop.ClassProject.MasterOFSToresSVC;
 using InternalShop.Models;
 using InternalShop.Reports.ExecuteSP;
@@ -10,8 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace InternalShop.Controllers
 {
@@ -28,11 +24,11 @@ namespace InternalShop.Controllers
         private ILogger<ManageStoreController> _logger;
         private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
-        public ManageStoreController(ApplicationDbContext db,IManageStore manageStore, IExecuteManageStore executeManageStore,IConverter converter, IDistributedCache cache, ILogger<ManageStoreController> logger
+        public ManageStoreController(ApplicationDbContext db, IManageStore manageStore, IExecuteManageStore executeManageStore, IConverter converter, IDistributedCache cache, ILogger<ManageStoreController> logger
 )
         {
-            _db = db;   
-             _manageStore = manageStore;
+            _db = db;
+            _manageStore = manageStore;
             _executeManageStore = executeManageStore;
             _converter = converter;
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
@@ -40,7 +36,7 @@ namespace InternalShop.Controllers
 
         }
         [HttpGet]
-        public async Task <IActionResult> GETALLStore()
+        public async Task<IActionResult> GETALLStore()
         {
             //var GetAllStore = await _manageStore.GetAllManageStoreAsync();
 

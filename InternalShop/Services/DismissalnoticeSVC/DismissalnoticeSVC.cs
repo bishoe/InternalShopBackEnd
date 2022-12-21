@@ -1,12 +1,6 @@
-﻿using InternalShop;
-using InternalShop.Models;
+﻿using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.ClassProject.DismissalnoticeSVC
 {
@@ -18,9 +12,9 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
         {
             _db = db;
         }
-      
 
-        public  IEnumerable<DismissalnoticeT> GetAllDismissalnoticeAsync(string SPName)
+
+        public IEnumerable<DismissalnoticeT> GetAllDismissalnoticeAsync(string SPName)
         {
             List<DismissalnoticeT> dismissalnotice = new();
 
@@ -39,7 +33,7 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
 
             GC.Collect();
 
-            return    _db.Dismissalnotice.FromSqlRaw("select * from " + SPName).ToList();
+            return _db.Dismissalnotice.FromSqlRaw("select * from " + SPName).ToList();
 
         }
 
@@ -73,25 +67,26 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
 
             ResponseObject responseObject = new();
             await using var dbContextTransaction = await _db.Database.BeginTransactionAsync();
-            try { 
-
-            var Adddismissalnotice = new DismissalnoticeT
+            try
             {
-                ManageStoreId = dismissalnotice.ManageStoreId,
-                ProdouctsID = dismissalnotice.ProdouctsID,
-                quantityProduct = dismissalnotice.quantityProduct,
-                DateAdd = dismissalnotice.DateAdd,
-                UserID = 1
 
-            };
-            var result = await _db.Dismissalnotice.AddAsync(Adddismissalnotice);
-            await _db.SaveChangesAsync();
-            await dbContextTransaction.CommitAsync();
-            responseObject.IsValid = true;
-            responseObject.Message = "Added successfully";
-            responseObject.Data = DateTime.Now.ToString();
+                var Adddismissalnotice = new DismissalnoticeT
+                {
+                    ManageStoreId = dismissalnotice.ManageStoreId,
+                    ProdouctsID = dismissalnotice.ProdouctsID,
+                    quantityProduct = dismissalnotice.quantityProduct,
+                    DateAdd = dismissalnotice.DateAdd,
+                    UserID = 1
 
-        }
+                };
+                var result = await _db.Dismissalnotice.AddAsync(Adddismissalnotice);
+                await _db.SaveChangesAsync();
+                await dbContextTransaction.CommitAsync();
+                responseObject.IsValid = true;
+                responseObject.Message = "Added successfully";
+                responseObject.Data = DateTime.Now.ToString();
+
+            }
             catch (Exception ex)
             {
 
@@ -110,39 +105,40 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
         {
             ResponseObject responseObject = new();
 
-            if (IdDismissalnotice ==dismissalnotice.DismissalnoticeId)
+            if (IdDismissalnotice == dismissalnotice.DismissalnoticeId)
             {
-                  _db.Entry(dismissalnotice).State = EntityState.Modified;
+                _db.Entry(dismissalnotice).State = EntityState.Modified;
             }
-            try {
+            try
+            {
                 if (dismissalnotice == null)
                 {
                     responseObject.Message = "Error Please check that all fields are entered";
 
                 }
                 await _db.SaveChangesAsync();
-            return true;
+                return true;
 
-        }
+            }
             catch (Exception ex)
             {
                 if (!dismissalnoticeExists(IdDismissalnotice))
 
-                Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
-            ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                    Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
+                ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
 
 
                 GC.Collect();
 
                 return false;
             }
-}
+        }
 
-        private bool  dismissalnoticeExists(int IdDismissalnotice)
+        private bool dismissalnoticeExists(int IdDismissalnotice)
         {
 
             return _db.Dismissalnotice.Any(x => x.DismissalnoticeId == IdDismissalnotice);
-        
+
         }
 
         public async Task<bool> DeleteDismissalnoticeAsync(int DismissalnoticeId)
@@ -163,8 +159,8 @@ namespace InternalShop.ClassProject.DismissalnoticeSVC
         }
     }
 
-   
-     
-     
-    }
- 
+
+
+
+}
+

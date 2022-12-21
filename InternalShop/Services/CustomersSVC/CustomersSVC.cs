@@ -1,9 +1,5 @@
 ﻿
 using InternalShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -26,7 +22,8 @@ namespace InternalShop.ClassProject.CustomersSVC
             {
 
                 customersT = await _db.Customers.OrderBy(x => x.CustomerName).ToListAsync();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
                       ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
@@ -40,7 +37,7 @@ namespace InternalShop.ClassProject.CustomersSVC
             var customerst = (CustomersT)null;
             try
             {
-                if (CustomerId !=0)
+                if (CustomerId != 0)
                 {
                     customerst = await _db.Customers.FindAsync(CustomerId);
 
@@ -94,7 +91,7 @@ namespace InternalShop.ClassProject.CustomersSVC
                 responseObject.Data = DateTime.Now.ToString();
 
             }
-            return   responseObject ;
+            return responseObject;
         }
 
         public async Task<bool> UpdateCustomersAsync(int CustomerId, CustomersT customersT)
@@ -103,15 +100,15 @@ namespace InternalShop.ClassProject.CustomersSVC
             if (CustomerId == customersT.CustomerId)
             {
 
-          _db.Entry(customersT).State = EntityState.Modified;
+                _db.Entry(customersT).State = EntityState.Modified;
 
-          }
+            }
             try
             {
                 if (customersT == null)
                 {
                     responseObject.Message = "Error Please check that all fields are entered";
-                   
+
                 }
                 await _db.SaveChangesAsync();
                 return true;
@@ -120,16 +117,16 @@ namespace InternalShop.ClassProject.CustomersSVC
             catch (Exception ex)
             {
                 if (!CustomersExists(CustomerId))
- 
-                Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
- ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
-           
 
-            return false;
+                    Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
+     ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+
+
+                return false;
             }
         }
 
-      
+
 
         bool CustomersExists(int CustomerId)
         {
@@ -138,11 +135,11 @@ namespace InternalShop.ClassProject.CustomersSVC
 
         public async Task<bool> DeleteCustomersAsync(int CustomerId)
         {
-             var GETCustomerBYId = await _db.Customers.FindAsync(CustomerId);
+            var GETCustomerBYId = await _db.Customers.FindAsync(CustomerId);
             ResponseObject responseObject = new();
             if (GETCustomerBYId == null)
             {
-                  responseObject.Message= "Error Id IS NULL";
+                responseObject.Message = "Error Id IS NULL";
                 return false;
             }
 

@@ -1,23 +1,13 @@
-﻿using InternalShop.ClassProject.SalesinvoiceSVC;
-using InternalShop;
+﻿using DinkToPdf;
+using DinkToPdf.Contracts;
+using InternalShop.ClassProject.SalesinvoiceSVC;
 using InternalShop.Models;
-using Microsoft.AspNetCore.Http;
+using InternalShop.Reports.ReportSalesInvoice;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 //using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
- 
-using System.Linq;
-using System.Threading.Tasks;
-using DinkToPdf.Contracts;
-using System.IO;
-using DinkToPdf;
-using InternalShop.Reports.ReportSalesInvoice;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
-using InternalShop.ClassProject;
 
 namespace InternalShop.Controllers
 {
@@ -28,7 +18,7 @@ namespace InternalShop.Controllers
         private readonly ISalesinvoice _salesinvoice;
         private readonly ApplicationDbContext _db;
         //private readonly IReportSalesInvoice _reportSalesInvoice;
-        private  IConverter _converter;
+        private IConverter _converter;
         private readonly IReportS _ReportSalesInvoice;
         private IDistributedCache _cache;
         private const string SalesinvoiceListCacheKey = "SalesinvoiceList";
@@ -43,7 +33,7 @@ namespace InternalShop.Controllers
             _db = db;
             _salesinvoice = salesinvoice;
             _converter = converter;
-             _ReportSalesInvoice = ReportSalesInvoice;
+            _ReportSalesInvoice = ReportSalesInvoice;
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
@@ -174,7 +164,7 @@ namespace InternalShop.Controllers
             }
             return BadRequest("Cannot create Report");
 
-          
+
 
         }
         [HttpGet("ReportSalesinvoice/{SellingMasterID}")]
@@ -198,7 +188,7 @@ namespace InternalShop.Controllers
 
                 PagesCount = true,
                 ProduceForms = true,
-                HtmlContent = _ReportSalesInvoice.GetHTMLString( SellingMasterID),
+                HtmlContent = _ReportSalesInvoice.GetHTMLString(SellingMasterID),
                 WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "styles.css") },
                 HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
                 FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
@@ -215,14 +205,14 @@ namespace InternalShop.Controllers
 
         }
 
-
-        public IActionResult GetAllsalesinvoice(string SPName)
+        [HttpGet]
+        public async Task<IActionResult> GetAllsalesinvoice()
         {
 
 
-            if (_cache.TryGetValue(SalesinvoiceListCacheKey, out IEnumerable<SalesinvoiceObject>? Salesinvoice))
+            if (_cache.TryGetValue(SalesinvoiceListCacheKey, out IEnumerable<SalesinvoiceObjectReport>? Salesinvoice))
             {
-                _logger.Log(LogLevel.Information, "Categories list found in cache.");
+                _logger.Log(LogLevel.Information, "salesinvoice list found in cache.");
 
             }
             else
@@ -231,16 +221,16 @@ namespace InternalShop.Controllers
                 try
                 {
                     await semaphore.WaitAsync();
-                    if (_cache.TryGetValue("Categorieslist", out Salesinvoice))
+                    if (_cache.TryGetValue("salesinvoicelist", out Salesinvoice))
                     {
-                        _logger.Log(LogLevel.Information, "Categories list found in cache.");
+                        _logger.Log(LogLevel.Information, "salesinvoice list found in cache.");
                     }
                     else
                     {
 
 
-                        _logger.Log(LogLevel.Information, "Categories list not found in cache. Fetching from database.");
-                        Salesinvoice = _salesinvoice.GetAllsalesinvoice();
+                        _logger.Log(LogLevel.Information, "salesinvoice list not found in cache. Fetching from database.");
+                        Salesinvoice = _salesinvoice.GetAllsalesinvoice("dbo.view_CreateReportSalesInvoices");
                         var cacheEntryOptions = new DistributedCacheEntryOptions()
                             .SetSlidingExpiration(TimeSpan.FromSeconds(60))
                             .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));

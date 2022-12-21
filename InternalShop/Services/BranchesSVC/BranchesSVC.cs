@@ -2,10 +2,6 @@
 using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternalShop.ClassProject.BranchesSVC
 {
@@ -19,7 +15,7 @@ namespace InternalShop.ClassProject.BranchesSVC
         }
         public async Task<ResponseObject> CreateBranches(BranchesT branchesViewModel)
         {
-            ResponseObject responseObject = new ();
+            ResponseObject responseObject = new();
             await using var dbContextTransaction = await _db.Database.BeginTransactionAsync();
             try
             {
@@ -57,9 +53,9 @@ namespace InternalShop.ClassProject.BranchesSVC
 
         }
 
-        public   IEnumerable<BranchesReportT> GETALLBRANCHESASYNC(string SPName)
+        public IEnumerable<BranchesReportT> GETALLBRANCHESASYNC(string SPName)
         {
-             //try
+            //try
             //{
 
             //}
@@ -75,7 +71,7 @@ namespace InternalShop.ClassProject.BranchesSVC
             //return _branchesModel;
             return _db.BranchesReport.FromSqlRaw("select * from " + SPName).ToList();
 
- 
+
         }
 
         public async Task<BranchesT> GETBRANCHByidASYNC(int BranchCode)
@@ -99,7 +95,7 @@ namespace InternalShop.ClassProject.BranchesSVC
             return GETBranchCodeBYID;
         }
         //TODO Check update Name and mobil not updateAll column
-        public async  Task<bool> UpdateBranches(int BranchID, BranchesT branches)
+        public async Task<bool> UpdateBranches(int BranchID, BranchesT branches)
         {
             ResponseObject responseObject = new();
             if (branches.BranchID == BranchID)
@@ -119,8 +115,8 @@ namespace InternalShop.ClassProject.BranchesSVC
             }
             catch (Exception ex)
             {
-            Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
- ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
+     ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
                 return false;
             }
         }

@@ -1,9 +1,4 @@
-﻿using InternalShop;
-using InternalShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using InternalShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -40,10 +35,10 @@ namespace InternalShop.ClassProject.EmployeeSVC
 
         public async Task<EmployeesT> GetEmployeesByIdAsync(int EmployeeId)
         {
-            var GetEmployyeById = (EmployeesT)null; 
+            var GetEmployyeById = (EmployeesT)null;
             try
             {
-                if (EmployeeId !=0)
+                if (EmployeeId != 0)
                 {
                     GetEmployyeById = await _db.Employees.FindAsync(EmployeeId);
 
@@ -57,10 +52,10 @@ namespace InternalShop.ClassProject.EmployeeSVC
                 Log.Error("Error while creating user {Error} {StackTrace} {InnerException} {Source}",
                                       ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
             }
-        
+
             return GetEmployyeById;
 
- }
+        }
         public async Task<ResponseObject> CreateEmployeesAsync(EmployeesT employeeT)
         {
 
@@ -74,7 +69,7 @@ namespace InternalShop.ClassProject.EmployeeSVC
                 {
                     EmployeeName = employeeT.EmployeeName,
                     EmployeeAddress = employeeT.EmployeeAddress,
-                    EmployeePhone=employeeT.EmployeePhone,
+                    EmployeePhone = employeeT.EmployeePhone,
                     EmployeeSalary = employeeT.EmployeeSalary,
                     Notes = employeeT.Notes,
                     UsersID = 1
@@ -125,15 +120,16 @@ namespace InternalShop.ClassProject.EmployeeSVC
             }
             catch (Exception ex)
             {
-                if (!EmployeeExists(EmployeeId))  
+                if (!EmployeeExists(EmployeeId))
 
-                Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
-            ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                    Log.Error("Error while Update Category {Error} {StackTrace} {InnerException} {Source}",
+                ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
 
 
 
-                return false;  }
-          
+                return false;
+            }
+
 
         }
 
@@ -142,7 +138,7 @@ namespace InternalShop.ClassProject.EmployeeSVC
         private bool EmployeeExists(int EmployeeId)
         {
 
-            return  _db.Employees.Any(x => x.EmployeeId == EmployeeId);
+            return _db.Employees.Any(x => x.EmployeeId == EmployeeId);
         }
 
         public async Task<bool> DeleteEmployeesAsync(int EmployeeId)

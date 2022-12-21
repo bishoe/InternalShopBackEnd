@@ -1,23 +1,18 @@
 ﻿using Enum;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModelService
 {
-    public class ResponseModel { 
-   public ResponseModel(ResponseCode responseCode, string responseMessage, object dataSet)
+    public class ResponseModel
     {
-        ResponseCode = responseCode;
-        ResponseMessage = responseMessage;
-        DateSet = dataSet;
+        public ResponseModel(ResponseCode responseCode, string responseMessage, object dataSet)
+        {
+            ResponseCode = responseCode;
+            ResponseMessage = responseMessage;
+            DateSet = dataSet;
+        }
+        public ResponseCode ResponseCode { get; set; }
+        public string ResponseMessage { get; set; }
+        public object DateSet { get; set; }
     }
-    public ResponseCode ResponseCode { get; set; }
-    public string ResponseMessage { get; set; }
-    public object DateSet { get; set; }
-}
-    
+
 }
