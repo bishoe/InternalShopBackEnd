@@ -51,10 +51,10 @@ namespace InternalShop.Controllers
         }
         [HttpGet("GetAllquantityProducts")]
 
-        public async Task<IActionResult> GetAllquantityProducts(string SPName)
+        public async Task<IActionResult> GetAllquantityProducts()
         {
 
-            if (_cache.TryGetValue(QuantityProductListCacheKey, out IEnumerable<QuantityProductT>? QuantityProduct))
+            if (_cache.TryGetValue(QuantityProductListCacheKey, out IEnumerable<ReportQuantityProductT>? reportQuantityProduct))
             {
                 _logger.Log(LogLevel.Information, "QuantityProduct list found in cache.");
 
@@ -65,7 +65,7 @@ namespace InternalShop.Controllers
                 try
                 {
                     await semaphore.WaitAsync();
-                    if (_cache.TryGetValue("QuantityProductlist", out QuantityProduct))
+                    if (_cache.TryGetValue("QuantityProductlist", out reportQuantityProduct))
                     {
                         _logger.Log(LogLevel.Information, "QuantityProduct list found in cache.");
                     }
@@ -74,11 +74,11 @@ namespace InternalShop.Controllers
 
 
                         _logger.Log(LogLevel.Information, "QuantityProduct list not found in cache. Fetching from database.");
-                        QuantityProduct = _quantityProduct.GetAllquantityProducts("dbo.view_CreateReportQuantityProduct");
+                        reportQuantityProduct = _quantityProduct.GetAllquantityProducts("dbo.view_CreateReportQuantityProduct");
                         var cacheEntryOptions = new DistributedCacheEntryOptions()
                             .SetSlidingExpiration(TimeSpan.FromSeconds(60))
                             .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600));
-                        await _cache.SetAsync(QuantityProductListCacheKey, QuantityProduct, cacheEntryOptions);
+                        await _cache.SetAsync(QuantityProductListCacheKey, reportQuantityProduct, cacheEntryOptions);
 
                     }
                 }
@@ -87,7 +87,7 @@ namespace InternalShop.Controllers
                     semaphore.Release();
                 }
             }
-            return Ok(QuantityProduct);
+            return Ok(reportQuantityProduct);
         }
 
 
@@ -146,5 +146,10 @@ namespace InternalShop.Controllers
             return NoContent();
 
         }
+
+
+
+
+
     }
 }

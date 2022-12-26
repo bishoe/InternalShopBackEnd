@@ -55,12 +55,12 @@ namespace InternalShop.ClassProject.QuantityProductSVC
 
         }
 
-        public IEnumerable<QuantityProductT> GetAllquantityProducts(string SPName)
+        public IEnumerable<ReportQuantityProductT> GetAllquantityProducts(string SPName)
         {
 
             GC.Collect();
 
-            return _db.QuantityProducts.FromSqlRaw("select * from " + SPName).ToList();
+            return _db.reportQuantityProduct.FromSqlRaw("select * from " + SPName).ToList();
 
 
         }

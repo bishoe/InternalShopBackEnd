@@ -33,7 +33,7 @@ namespace InternalShop
 
         public DbSet<SalesinvoiceObject> salesinvoiceObjects { get; set; }
         public DbSet<SalesinvoiceObjectReport> SalesinvoiceObjectReport { get; set; }
-
+        public DbSet<ReportQuantityProductT> reportQuantityProduct { get; set; }
         
         //public DbSet<SellProductsT> SellProducts { get; set; }
 

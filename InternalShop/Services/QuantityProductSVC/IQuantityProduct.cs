@@ -8,9 +8,12 @@ namespace InternalShop.ClassProject.QuantityProductSVC
         //  public async Task<object> GetQt(int ProdouctsID, int BranchCode);
         //  Task<bool> UpdateQTafterSelling(int ProductId, QuantityProductT _ObjectQuantityProductT);
         Task<ResponseObject> AddQtProduct(int ProdouctsID);
-        IEnumerable<QuantityProductT> GetAllquantityProducts(string SPName);
+        IEnumerable<ReportQuantityProductT> GetAllquantityProducts(string SPName);
 
         Task<ResponseObject> UpdateQTafterSelling(int ProductId, ObjectQuantityProductT _ObjectQuantityProduct);
+
+
+        //IEnumerable<ReportQuantityProductT> GetAlLQuantity(string SPName);
 
     }
 }

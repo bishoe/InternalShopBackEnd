@@ -14,7 +14,7 @@ using System.Text;
 
 namespace InternalShop.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
 
     [Route("api/[controller]")]
 

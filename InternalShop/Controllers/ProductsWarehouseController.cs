@@ -54,7 +54,7 @@ namespace InternalShop.Controllers
 
             if (_cache.TryGetValue(ProductsWarehouseListCacheKey, out IEnumerable<ProductsWarehouseObjectT>? ProductsWarehouseObject))
             {
-                _logger.Log(LogLevel.Information, "Categories list found in cache.");
+                _logger.Log(LogLevel.Information, "ProductsWarehouse list found in cache.");
 
             }
             else
@@ -63,15 +63,15 @@ namespace InternalShop.Controllers
                 try
                 {
                     await semaphore.WaitAsync();
-                    if (_cache.TryGetValue("Categorieslist", out ProductsWarehouseObject))
+                    if (_cache.TryGetValue("ProductsWarehouselist", out ProductsWarehouseObject))
                     {
-                        _logger.Log(LogLevel.Information, "Categories list found in cache.");
+                        _logger.Log(LogLevel.Information, "ProductsWarehouse list found in cache.");
                     }
                     else
                     {
 
 
-                        _logger.Log(LogLevel.Information, "Categories list not found in cache. Fetching from database.");
+                        _logger.Log(LogLevel.Information, "ProductsWarehouse list not found in cache. Fetching from database.");
                         ProductsWarehouseObject = _productsWarehouse.GetAllProductsWarehouse("dbo.view_CreateReportProductsWarehouse");
                         var cacheEntryOptions = new DistributedCacheEntryOptions()
                             .SetSlidingExpiration(TimeSpan.FromSeconds(60))
@@ -140,21 +140,11 @@ namespace InternalShop.Controllers
         public IActionResult GetSellingPrice(int ProdouctsID)
         {
             var checkexistsId = true;
-
             checkexistsId = _db.ProductsWarehouse.Any(x => x.ProdouctsID == ProdouctsID);
             if (checkexistsId is false) return BadRequest("Cannot Find Prodouct");
-
             var GetSellingPrice = _db.ProductsWarehouse.Where(x => x.ProdouctsID == ProdouctsID).FirstOrDefault().SellingPrice;
-
             GC.Collect();
-
             return Ok(GetSellingPrice);
-
-
-
-
-
-
 
         }
 
