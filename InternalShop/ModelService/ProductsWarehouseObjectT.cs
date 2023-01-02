@@ -64,8 +64,8 @@ namespace InternalShop.Models
         //public decimal TotalSize { get; set; }
         [Required]
         public int QuntityProduct { get; set; }
-        [Required]
-        public int QtStartPeriod { get; set; }
+        //[Required]
+        //public int QtStartPeriod { get; set; }
         [Required]
         public DateTime Dateofregistration { get; set; }
         [Required]

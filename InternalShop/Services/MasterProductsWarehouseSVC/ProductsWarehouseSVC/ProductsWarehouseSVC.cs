@@ -63,7 +63,7 @@ namespace InternalShop.ClassProject.MasterProductsWarehouseSVC.ProductsWarehouse
                             ExpireDate = ProductsWarehouseModel.ExpireDate,
                             Dateofregistration = ProductsWarehouseModel.Dateofregistration,
                             Anexpiredproduct = ProductsWarehouseModel.Anexpiredproduct,
-                            QtStartPeriod = ProductsWarehouseModel.QtStartPeriod,
+                            //QtStartPeriod = ProductsWarehouseModel.QtStartPeriod,
                             SellingPrice = ProductsWarehouseModel.SellingPrice,
                             TotalAmountRow = ProductsWarehouseModel.TotalAmountRow,
                             PermissionToEntertheStoreProductId = ProductsWarehouseModel.PermissionToEntertheStoreProductId,
